@@ -1,0 +1,132 @@
+import { CarouselModule } from "ngx-owl-carousel-o";
+import { ChartsModule } from "ng2-charts";
+import { CommonModule } from "@angular/common";
+import {
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher,
+} from "@angular/material/core";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { FooterComponent } from "./footer/footer.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HeaderComponent } from "./header/header.component";
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatOptionModule,
+  MatPaginatorModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTreeModule,
+} from "@angular/material";
+import { MomentModule } from "ngx-moment";
+import { NgModule } from "@angular/core";
+import { NgxGalleryModule } from "ngx-gallery";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { RouterModule } from "@angular/router";
+import { TeximateModule } from "ngx-teximate";
+
+@NgModule({
+  declarations: [FooterComponent, HeaderComponent],
+  exports: [
+    CarouselModule,
+    ChartsModule,
+    CommonModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
+    FooterComponent,
+    FormsModule,
+    HeaderComponent,
+    MatBadgeModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    MomentModule,
+    NgxGalleryModule,
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TeximateModule,
+  ],
+  imports: [
+    CarouselModule,
+    CommonModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
+    FormsModule,
+    MatBadgeModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    MomentModule,
+    NgxGalleryModule,
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TeximateModule,
+  ],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+  ],
+})
+export class SharedModule {}

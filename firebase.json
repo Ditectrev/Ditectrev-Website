@@ -1,0 +1,27 @@
+{
+  "hosting": {
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "public": "functions/dist/apps/ditectrev-browser",
+    "rewrites": [
+      {
+        "function": "angularUniversalFunction",
+        "source": "**"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions"
+  },
+  "emulators": {
+    "database": {
+      "port": "9000"
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}
