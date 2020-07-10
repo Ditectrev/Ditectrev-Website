@@ -18,6 +18,7 @@
 // TODO: Add sitemap.xml
 // TODO: Add JSDoc like in services.component.ts.
 // TODO: Check if HTML markups such as &copy;, &amp; etc are being used instead of (c), & etc.
+// TODO: Change all fonts units to rem.
 
 import Agastya from "agastya";
 import { AppComponent } from "./app.component";
