@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 // TODO: Make SiriWave working, issue #31.
 // TODO: Make RevealFx working ,issue #3.
@@ -8,7 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements AfterViewChecked, OnInit {
+export class HomeComponent implements AfterViewInit, OnInit {
   /**
    * @constructor
    * @description Create a new instance of this component.
@@ -28,11 +28,11 @@ export class HomeComponent implements AfterViewChecked, OnInit {
 
   /**
    * @access public
-   * @callback ngAfterViewChecked
+   * @callback ngAfterViewInit
    * @description Invoked immediately after Angular has completed checking component's view.
    * @returns {void}
    */
-  public ngAfterViewChecked(): void {
+  public ngAfterViewInit(): void {
     this.spinner.hide();
   }
 }
