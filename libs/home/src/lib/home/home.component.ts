@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { NgxSpinnerService } from "ngx-spinner";
+import { Component } from "@angular/core";
 // TODO: Make SiriWave working, issue #31.
 // TODO: Make RevealFx working ,issue #3.
 
@@ -8,31 +7,4 @@ import { NgxSpinnerService } from "ngx-spinner";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements AfterViewInit, OnInit {
-  /**
-   * @constructor
-   * @description Create a new instance of this component.
-   * @param {NgxSpinnerService} spinner Spinner class object to show/hide spinner on home page.
-   */
-  constructor(private spinner: NgxSpinnerService) {}
-
-  /**
-   * @access public
-   * @callback ngOnInit
-   * @description Invoked immediately after Angular has completed initialization and setting up component.
-   * @returns {void}
-   */
-  public ngOnInit(): void {
-    this.spinner.show(); // TODO: Show it only during the first load, dynamically.
-  }
-
-  /**
-   * @access public
-   * @callback ngAfterViewInit
-   * @description Invoked immediately after Angular has completed checking component's view.
-   * @returns {void}
-   */
-  public ngAfterViewInit(): void {
-    this.spinner.hide();
-  }
-}
+export class HomeComponent { }

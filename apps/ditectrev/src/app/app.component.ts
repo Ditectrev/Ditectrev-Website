@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { NgxSpinnerService } from "ngx-spinner";
 import { RouterOutlet } from '@angular/router';
 
 const FADE_ANIMATION =
@@ -19,9 +20,36 @@ const FADE_ANIMATION =
   animations: [FADE_ANIMATION]
 })
 // TODO: Add unit tests coverage for these methods.
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnInit {
   public getRouterOutletState(routerOutlet: RouterOutlet): RouterOutlet {
     const routeData = routerOutlet.activatedRouteData.animation;
     return routeData ? routeData : 'rootPage';
+  }
+
+  /**
+   * @constructor
+   * @description Create a new instance of this component.
+   * @param {NgxSpinnerService} spinner Spinner class object to show/hide spinner on home page.
+   */
+  constructor(private spinner: NgxSpinnerService) { }
+
+  /**
+   * @access public
+   * @callback ngOnInit
+   * @description Invoked immediately after Angular has completed initialization and setting up component.
+   * @returns {void}
+   */
+  public ngOnInit(): void {
+    this.spinner.show();
+  }
+
+  /**
+   * @access public
+   * @callback ngAfterViewInit
+   * @description Invoked immediately after Angular has completed checking component's view.
+   * @returns {void}
+   */
+  public ngAfterViewInit(): void {
+    this.spinner.hide();
   }
 }
