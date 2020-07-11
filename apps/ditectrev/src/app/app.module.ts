@@ -2,7 +2,6 @@
 // TODO: Make everything alphabetically.
 // TODO: Check TSLint options.
 // TODO: Check compiler options.
-// TODO: Unify all imports, remove "./".
 // TODO: Check angular.json and all compiling options.
 // TODO: Fix unit tests from pipeline.
 // TODO: Check VSCode options.
@@ -10,12 +9,10 @@
 // TODO: Add Docker Bench Security.
 // TODO: Make error handling to Sentry.
 // TODO: Change links to policies in Agastya.
-// TODO: Add in many sections Animate on Scroll (AOS) and/or WOW.js
 // TODO: Check many interesting things from Angular 8 Example App.
 // TODO: Add push notifications (something simple, e.g. sign up for a newsletter) and check offline worker after adding CSP.
 // TODO: Check Google Analytics and Hotjar if works after implementing CSP.
 // TODO: Remove 404 error related with manifest.
-// TODO: Add sitemap.xml
 // TODO: Add JSDoc like in services.component.ts.
 // TODO: Check if HTML markups such as &copy;, &amp; etc are being used instead of (c), & etc.
 // TODO: Change all fonts units to rem.
@@ -48,4 +45,4 @@ new Agastya(String(process.env.AGASTYA_API_KEY)); // Make sure the environmental
   ],
   providers: [{ provide: "googleTagManagerId", useValue: "GTM-WVLBQKK" }], // TODO: Add other integrations.
 })
-export class AppModule {}
+export class AppModule { }
