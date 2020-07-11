@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 import { RouterOutlet } from '@angular/router';
 
+// TODO: Outsource this to constants.
 const FADE_ANIMATION =
   // Trigger name, needed to attach in HTML.
   trigger('routeState', [
