@@ -26,7 +26,7 @@ COPY . .
 # Expose necessary ports for development with live preload.
 EXPOSE 4200 49153
 
-# Run the application, adding "--host 0.0.0.0 -poll 1" to "ng serve" is required to update the start script to listen to all interfaces from the container.
+# Run the application, adding "--host 0.0.0.0 -poll 2000" to "ng serve" is required to update the start script to listen to all interfaces from the container.
 CMD ["npm", "run", "start"]
 # Bundle for production.
 #CMD ["npm", "run", "build"]

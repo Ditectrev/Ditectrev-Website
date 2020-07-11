@@ -120,7 +120,7 @@
   "scripts": {
     "ng": "ng",
     "nx": "nx",
-    "start": "ng serve --host 0.0.0.0 --poll 1",
+    "start": "ng serve --host 0.0.0.0 --poll 2000",
     "build:ditectrev:staging": "ng build --project=ditectrev",
     "build:ditectrev:production": "ng build --project=ditectrev --prod",
     "build:ditectrev:ssr:staging": "npm run build:ditectrev:staging && ng run ditectrev:server && npm run compile:ditectrev:server",
