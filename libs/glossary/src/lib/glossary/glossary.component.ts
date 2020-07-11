@@ -132,6 +132,7 @@ export class GlossaryComponent implements AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator; // Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
   @ViewChild(MatSort, { static: false }) sort: MatSort = new MatSort();
 
+  // TODO: Outsorce this to utils.
   public ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

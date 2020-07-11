@@ -23,6 +23,7 @@ import { GeoJsonProperties } from "geojson";
 import { GeoPath, GeoPermissibleObjects, GeoProjection } from "d3";
 import * as d3 from "d3";
 
+// TODO: Make this more dump component, maybe outsource something to utils.
 /**
  * @component ServicesComponent
  * @description Create the component.
@@ -77,7 +78,7 @@ export class ServicesComponent implements AfterViewInit {
    * @description Create a new instance of this component.
    * @param {Renderer2} renderer2 Abstraction class object to manipulate elements without accessing DOM directly.
    */
-  constructor(private renderer2: Renderer2) {}
+  constructor(private renderer2: Renderer2) { }
 
   /**
    * @access public
