@@ -1,3 +1,4 @@
+import * as d3 from "d3";
 import {
   AfterViewInit,
   Component,
@@ -21,7 +22,6 @@ import { ChartDataSets, ChartOptions, ChartType } from "chart.js";
 import { Color, Label } from "ng2-charts";
 import { GeoJsonProperties } from "geojson";
 import { GeoPath, GeoPermissibleObjects, GeoProjection } from "d3";
-import * as d3 from "d3";
 
 // TODO: Make this more dump component, maybe outsource something to utils.
 /**
@@ -37,7 +37,7 @@ import * as d3 from "d3";
 export class ServicesComponent implements AfterViewInit {
   // Cyber Security animation target element.
   @ViewChild("renderTorusKnot", { static: false })
-  private renderTorusKnot!: ElementRef<HTMLElement>; // Get reference of div element from HTML element to render Three.js. Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+  private renderTorusKnot!: ElementRef<HTMLElement>; // Get reference of span element from HTML element to render Three.js. Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
 
   // Software Development animation target element.
   @ViewChild("renderGeoProjection", { static: false })
@@ -78,7 +78,7 @@ export class ServicesComponent implements AfterViewInit {
    * @description Create a new instance of this component.
    * @param {Renderer2} renderer2 Abstraction class object to manipulate elements without accessing DOM directly.
    */
-  constructor(private renderer2: Renderer2) { }
+  constructor(private renderer2: Renderer2) {}
 
   /**
    * @access public

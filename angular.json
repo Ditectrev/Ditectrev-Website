@@ -43,6 +43,7 @@
               "node_modules/intl-tel-input/build/js/intlTelInput.min.js",
               "node_modules/intl-tel-input/build/js/utils.js",
               "node_modules/particles.js/particles.js",
+              "node_modules/siriwave/dist/siriwave.umd.min.js",
               "node_modules/three/build/three.min.js"
             ]
           },

@@ -59,6 +59,7 @@ List of useful commands during development.
 - `ng serve` - build, and serve project.
 - `ng serve --project=MYAPP` - run local server in production environment, navigate to `http://localhost:4200/` in order to access it. Changes are detected automatically, and will server will reload the page once they will be detected.
 - `ng test` - run unit tests.
+- `ng test LIB_NAME` - run unit tests for particular lib.
 - `ng version` - show version of Angular with its core dependencies.
 - `ng update` - check which packages are ready to update.
 - `ng update --all` - update all packages.

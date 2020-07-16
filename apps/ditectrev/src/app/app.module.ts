@@ -1,5 +1,4 @@
 // TODO: Check all config files like with tsconfig's. Also others options excluding security for Angular/TypeScript compilers.
-// TODO: Make everything alphabetically.
 // TODO: Check TSLint options.
 // TODO: Check compiler options.
 // TODO: Check angular.json and all compiling options.
@@ -16,6 +15,7 @@
 // TODO: Add JSDoc like in services.component.ts.
 // TODO: Check if HTML markups such as &copy;, &amp; etc are being used instead of (c), & etc.
 // TODO: Change all fonts units to rem.
+// TODO: Make CSS and HTML alphabetically (only these are missing).
 
 import Agastya from "agastya";
 import { AppComponent } from "./app.component";
@@ -45,4 +45,4 @@ new Agastya(String(process.env.AGASTYA_API_KEY)); // Make sure the environmental
   ],
   providers: [{ provide: "googleTagManagerId", useValue: "GTM-WVLBQKK" }], // TODO: Add other integrations.
 })
-export class AppModule { }
+export class AppModule {}

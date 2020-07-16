@@ -73,6 +73,7 @@
     "particles.js": "^2.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.2",
+    "siriwave": "^2.0.3",
     "three": "^0.107.0",
     "zone.js": "^0.9.1"
   },

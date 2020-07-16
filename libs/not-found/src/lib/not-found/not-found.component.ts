@@ -28,7 +28,7 @@ import {
 })
 export class NotFoundComponent implements AfterViewInit {
   @ViewChild("renderIcosahedron", { static: false })
-  private renderIcosahedron!: ElementRef<HTMLElement>; // Get reference of div element from HTML element to render Three.js. Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+  private renderIcosahedron!: ElementRef<HTMLElement>; // Get reference of span element from HTML element to render Three.js. Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
 
   private aspect: number = 1; // Region of space in the modeled world that may appear on the screen (camera frustum) aspect ratio, usually the canvas width / canvas height.
   private far: number = 20000; // Region of space in the modeled world that may appear on the screen (camera frustum) far plane.

@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-// TODO: Make SiriWave working, issue #31.
 // TODO: Make RevealFx working ,issue #3.
 
 @Component({

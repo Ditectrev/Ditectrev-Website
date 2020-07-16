@@ -6,6 +6,7 @@ import { TextAnimation } from "ngx-teximate";
 
 declare let particlesJS: any; // Required to be properly interpreted by TypeScript.
 
+// TODO: Change the SliderComponent name?
 /**
  * @component SliderComponent
  * @description Create the component.
@@ -59,6 +60,6 @@ export class SliderComponent implements OnInit {
    * @returns {void}
    */
   public invokeParticles(): void {
-    particlesJS("particles-js", ParticlesConfig, function() {});
+    particlesJS("particles-js", ParticlesConfig, function () { });
   }
 }
