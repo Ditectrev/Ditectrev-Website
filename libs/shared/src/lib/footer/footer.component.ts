@@ -21,6 +21,7 @@ interface ResponseMailChimp {
   msg: string;
 }
 
+// TODO: Add invisible reCAPTCHA?
 // TODO: Social icons with education included, when blog/courses will be done then: CodeSandbox, Discord, GitHub, Medium and YouTube too.
 @Component({
   selector: "app-footer",
