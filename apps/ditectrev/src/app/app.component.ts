@@ -1,30 +1,32 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { NgxSpinnerService } from "ngx-spinner";
-import { RouterOutlet } from '@angular/router';
+import { animate, style, transition, trigger } from "@angular/animations";
+// import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+// import { NgxSpinnerService } from "ngx-spinner";
+import { RouterOutlet } from "@angular/router";
 
 // TODO: Outsource this to constants.
 const FADE_ANIMATION =
   // Trigger name, needed to attach in HTML.
-  trigger('routeState', [
+  trigger("routeState", [
     // Route for 'enter' transition.
-    transition('*<=>*', [
+    transition("*<=>*", [
       style({ opacity: 0.1 }), // CSS styles at start of transition.
-      animate('1.2s', style({ opacity: 1 })) // Animation and styles at end of transition.
-    ])
+      animate("1.2s", style({ opacity: 1 })), // Animation and styles at end of transition.
+    ]),
   ]);
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [FADE_ANIMATION]
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
+  animations: [FADE_ANIMATION],
 })
 // TODO: Add unit tests coverage for these methods.
-export class AppComponent implements AfterViewInit, OnInit {
+// TODO: Uncomment ngx-spinner and fix it on Angular Universal, because now it's breaking.
+export class AppComponent {
   public getRouterOutletState(routerOutlet: RouterOutlet): RouterOutlet {
     const routeData = routerOutlet.activatedRouteData.animation;
-    return routeData ? routeData : 'rootPage';
+    return routeData ? routeData : "rootPage";
   }
 
   /**
@@ -32,7 +34,7 @@ export class AppComponent implements AfterViewInit, OnInit {
    * @description Create a new instance of this component.
    * @param {NgxSpinnerService} spinner Spinner class object to show/hide spinner on home page.
    */
-  constructor(private spinner: NgxSpinnerService) { }
+  // constructor(private spinner: NgxSpinnerService) {}
 
   /**
    * @access public
@@ -40,9 +42,9 @@ export class AppComponent implements AfterViewInit, OnInit {
    * @description Invoked immediately after Angular has completed initialization and setting up component.
    * @returns {void}
    */
-  public ngOnInit(): void {
-    this.spinner.show();
-  }
+  // public ngOnInit(): void {
+  //   this.spinner.show();
+  // }
 
   /**
    * @access public
@@ -50,7 +52,7 @@ export class AppComponent implements AfterViewInit, OnInit {
    * @description Invoked immediately after Angular has completed checking component's view.
    * @returns {void}
    */
-  public ngAfterViewInit(): void {
-    this.spinner.hide();
-  }
+  // public ngAfterViewInit(): void {
+  //   this.spinner.hide();
+  // }
 }

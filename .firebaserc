@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "ditectrev-v3-staging",
-    "development": "ditectrev-v3-staging",
+    "default": "ditectrev-v3-staging-5ad41",
+    "development": "ditectrev-v3-staging-5ad41",
     "production": "ditectrev-v3-prod"
   }
 }

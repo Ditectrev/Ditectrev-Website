@@ -198,9 +198,9 @@ const mailTransport = nodemailer.createTransport({
   // await nestApp.listen(4479); // Initialize NestJS server, and listen on specific port (for testing on localhost).
 })().catch((err) => console.error(err));
 
-// TODO: Add ".region('europe-west1')" all Firebase Cloud Functions, issue #842.
+// TODO: Add ".region('europe-west')" all Firebase Cloud Functions, issue #842.
 // Firebase Cloud Function for Server Side Rendering (SSR).
-exports.angularUniversalFunction = functions.https.onRequest(expressApp);
+exports.angularUniversalFunction = functions.https.onRequest(<any>expressApp); // TODO: Remove the "<any>", issue #587.
 
 // Firebase Cloud Function for sending e-mail from a contact form.
 exports.contactFormFunction = functions.firestore

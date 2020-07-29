@@ -81,7 +81,7 @@ List of useful commands during development.
 - `npm run dep-graph` - run dependency graph.
 - `npm test -t "test-name"` - run only single test.
 
-### others
+### Others
 
 - `npx compodoc -p apps/ditectrev/tsconfig.app.json` - generate documentation.
 - `npx jest --clearCache` - clear cache for Jest.
