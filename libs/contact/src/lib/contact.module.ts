@@ -1,3 +1,4 @@
+// TODO: Should be Firebase-related modules a separated module?
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
