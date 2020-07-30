@@ -1,6 +1,6 @@
 // TODO: Add SweetAlerts with a progressbar on form reset, control behaviour of the form with errors.
 // TODO: Add Google Maps component.
-// TODO: Add keeping state for contact form (it might be done using localStorage to persist data maybe).
+// TODO: Add keeping state for contact form (it might be done using localStorage to persist data maybe) or some kind of state management using NgRx etc.
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import {

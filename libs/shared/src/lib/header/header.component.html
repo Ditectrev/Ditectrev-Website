@@ -20,13 +20,8 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <!-- TODO: Put logo here (in SVG preferable - convert from AI). -->
-      <p
-        aria-label="Name of our company is IT Consulting Company."
-        title="IT Consulting Company"
-      >
-        IT Consulting Company
-      </p>
+      <!-- Ditectrev's logo. -->
+      <img alt="Ditectrev Logo" src="assets/logo.svg" title="Ditectrev" />
       <!--
         The below element is hidden by default, and will be shown only on devices with min-width: 960px.
       -->
@@ -109,7 +104,7 @@
           <!-- Mobile main menu elements. -->
           <a
             mat-list-item
-            *ngIf="i !== 1 && !lastItem; else servicesTemplate"
+            *ngIf="i !== 1 && !lastItem; else: servicesTemplate"
             routerLink="{{ menuItem.path }}"
             attr.aria-label="{{
               menuItem.name
@@ -128,7 +123,7 @@
             -->
             <a
               mat-list-item
-              *ngIf="!lastItem; else closeTemplate"
+              *ngIf="!lastItem; else: closeTemplate"
               [matMenuTriggerFor]="menuMobile"
               routerLink="{{ menuItem.path }}"
               attr.aria-label="{{ menuItem.name }}. Click to read more about {{

@@ -1,6 +1,6 @@
 <footer>
   <aside
-    gdAreas="address newsletter newsletter newsletter information information | resources resources resources social social social | copyrights copyrights copyrights copyrights copyrights copyrights"
+    gdAreas="address address newsletter newsletter newsletter information | resources resources resources social social social | copyrights copyrights copyrights copyrights copyrights copyrights"
     gdAreas.lt-md="address | information | resources | newsletter | social | copyrights"
     gdAlignColumns="center space-evenly"
     gdAlignRows="space-evenly start"
@@ -16,13 +16,8 @@
       fxLayoutAlign.lt-md="start center"
       role="region"
     >
-      <!-- TODO: Put logo here (in SVG preferable - convert from AI). -->
-      <h3
-        aria-label="These are details about IT Consulting Company."
-        title="IT Consulting Company"
-      >
-        IT Consulting Company
-      </h3>
+      <!-- Ditectrev's logo. -->
+      <img alt="Ditectrev Logo" src="assets/logo.svg" title="Ditectrev" />
       <!-- Footer's menu items located on the left side. -->
       <ng-container *ngFor="let informationItem of informationItems">
         <p
