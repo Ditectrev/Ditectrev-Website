@@ -18,7 +18,7 @@ export class DigitalStrategyComponent {
   }[] = [
     {
       description:
-        "Business Model Canvas, Business Processes, Customer Journey, Customer Relationship Management (CRM), Innovation Acceleration, Lean Canvas, Product Management, User Journey Mapping.",
+        "Business Model Canvas, Business Processes, Customer Development & Journey, Customer Relationship Management (CRM), Innovation Acceleration, Lean Canvas, Product Management, User Journey Mapping.",
       name: "Business Development",
       src: "assets/services/digital-strategy/01_business_development.png",
     },
@@ -78,7 +78,7 @@ export class DigitalStrategyComponent {
     },
     {
       description:
-        "Concept Development, Graphics & Design, Lean User Experience (UX), Logo & Brand Identity, Motion Design, Prototyping, Video & Animations.",
+        "Concept Development, Graphics & Design, Lean User Experience (UX), Logo & Brand Identity, Motion Design, Prototyping, Validation Learning, Video & Animations.",
       name: "Minimum Viable Products (MVP's) & Proof of Concepts (PoF's)",
       src: "assets/services/digital-strategy/11_mvps_and_pofs.png",
     },

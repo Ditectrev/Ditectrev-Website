@@ -24,7 +24,7 @@ export class SoftwareDevelopmentComponent {
     },
     {
       description:
-        "Backend For Frontend (BFF), Cloud Security, Cloud Infrastructure, DevOps, DevSecOps, SecDevOps, Serverless.",
+        "Cloud Security, Cloud Infrastructure, DevOps, DevSecOps, SecDevOps, Serverless.",
       name: "Cloud Solutions",
       src: "assets/services/software-development/02_cloud_solutions.png",
     },
@@ -85,7 +85,7 @@ export class SoftwareDevelopmentComponent {
     },
     {
       description:
-        "Web Applications - Backend, Frontend, Responsive Web Design (RWD), Search Engine Optimization (SEO), Web Content Accessibility Guidelines (WCAG).",
+        "Web Applications - Backend, Backend For Frontend (BFF), Frontend, Micro Frontend, Microservices, Responsive Web Design (RWD), Search Engine Optimization (SEO), Web Content Accessibility Guidelines (WCAG).",
       name: "Web Development",
       src: "assets/services/software-development/12_web_development.png",
     },
