@@ -16,6 +16,8 @@
 // TODO: Check if HTML markups such as &copy;, &amp; etc are being used instead of (c), & etc.
 // TODO: Change all fonts units to rem.
 // TODO: Make CSS and HTML alphabetically (only these are missing).
+// TODO: Convert all PNG files to SVG, alternatively some to AVIF.
+// TODO: Use native lazy loading on images (loading="lazy").
 
 import Agastya from "agastya";
 import { AppComponent } from "./app.component";

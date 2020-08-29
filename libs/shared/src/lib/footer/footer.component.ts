@@ -23,6 +23,7 @@ interface ResponseMailChimp {
 
 // TODO: Add invisible reCAPTCHA?
 // TODO: Social icons with education included, when blog/courses will be done then: CodeSandbox, Discord, GitHub, Medium and YouTube too.
+// TODO: Zoom in a bit this section/region of footer (one of the three only: "Ditectrev", "Stay Informed", "Information") which is on hover.
 @Component({
   selector: "app-footer",
   templateUrl: "./footer.component.html",

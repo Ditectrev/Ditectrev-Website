@@ -149,6 +149,9 @@
         >These are our social media profiles.</span
       >
       <ng-container *ngFor="let socialItem of socialItems">
+        <!--
+          TODO: Show social icons as transition one-by-one, starting from right to left.
+        -->
         <a
           href="{{ socialItem.url }}"
           rel="noopener"
