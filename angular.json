@@ -16,13 +16,15 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "./webpack.browser.config.js"
+              "path": "./webpack.browser.config.js",
+              "replaceDuplicatePlugins": true
             },
             "outputPath": "functions/dist/apps/ditectrev-browser",
             "index": "apps/ditectrev/src/index2.html",
             "main": "apps/ditectrev/src/main.browser.ts",
             "polyfills": "apps/ditectrev/src/polyfills.ts",
             "tsConfig": "apps/ditectrev/tsconfig.app.json",
+            "aot": true,
             "assets": [
               "apps/ditectrev/src/favicon.ico",
               "apps/ditectrev/src/robots.txt",
@@ -57,14 +59,9 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": {
-                "hidden": true,
-                "scripts": true,
-                "styles": true
-              },
+              "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -73,6 +70,11 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "serviceWorker": true,
@@ -81,7 +83,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ditectrev:build"
           },
@@ -102,7 +104,8 @@
           "options": {
             "tsConfig": [
               "apps/ditectrev/tsconfig.app.json",
-              "apps/ditectrev/tsconfig.spec.json"
+              "apps/ditectrev/tsconfig.spec.json",
+              "apps/ditectrev/tsconfig.server.json"
             ],
             "exclude": ["**/node_modules/**", "!apps/ditectrev/**"]
           }
@@ -112,6 +115,7 @@
           "options": {
             "jestConfig": "apps/ditectrev/jest.config.js",
             "tsConfig": "apps/ditectrev/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "apps/ditectrev/src/test-setup.ts",
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -122,21 +126,54 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "main": "apps/ditectrev/src/main.server.ts",
+            "main": "server/main.ts",
             "outputPath": "functions/dist/apps/ditectrev-server",
-            "tsConfig": "apps/ditectrev/tsconfig.server.json"
+            "tsConfig": "apps/ditectrev/tsconfig.server.json",
+            "externalDependencies": [
+              "@nestjs/microservices",
+              "@nestjs/microservices/microservices-module",
+              "@nestjs/websockets",
+              "@nestjs/websockets/socket-module",
+              "cache-manager"
+            ]
           },
           "configurations": {
             "production": {
+              "outputHashing": "media",
               "fileReplacements": [
                 {
                   "replace": "apps/ditectrev/src/environments/environment.ts",
                   "with": "apps/ditectrev/src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "sourceMap": false,
+              "optimization": true
             }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "ditectrev:build",
+            "serverTarget": "ditectrev:server"
           },
-          "index": "functions/dist/apps/ditectrev-browser/index2.html"
+          "configurations": {
+            "production": {
+              "browserTarget": "ditectrev:build:production",
+              "serverTarget": "ditectrev:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "ditectrev:build:production",
+            "serverTarget": "ditectrev:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
     },
@@ -159,9 +196,8 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "linter": "tslint",
             "tsConfig": "apps/ditectrev-e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**", "!apps/ditectrev-e2e/**"]
           }
@@ -189,6 +225,7 @@
           "options": {
             "jestConfig": "libs/about-us/jest.config.js",
             "tsConfig": "libs/about-us/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/about-us/src/test-setup.ts"
           }
         }
@@ -220,6 +257,7 @@
           "options": {
             "jestConfig": "libs/contact/jest.config.js",
             "tsConfig": "libs/contact/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/contact/src/test-setup.ts"
           }
         }
@@ -251,6 +289,7 @@
           "options": {
             "jestConfig": "libs/copyrights/jest.config.js",
             "tsConfig": "libs/copyrights/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/copyrights/src/test-setup.ts"
           }
         }
@@ -282,6 +321,7 @@
           "options": {
             "jestConfig": "libs/core/jest.config.js",
             "tsConfig": "libs/core/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/core/src/test-setup.ts"
           }
         }
@@ -313,6 +353,7 @@
           "options": {
             "jestConfig": "libs/cyber-security/jest.config.js",
             "tsConfig": "libs/cyber-security/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/cyber-security/src/test-setup.ts"
           }
         }
@@ -344,6 +385,7 @@
           "options": {
             "jestConfig": "libs/digital-strategy/jest.config.js",
             "tsConfig": "libs/digital-strategy/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/digital-strategy/src/test-setup.ts"
           }
         }
@@ -375,6 +417,7 @@
           "options": {
             "jestConfig": "libs/faq/jest.config.js",
             "tsConfig": "libs/faq/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/faq/src/test-setup.ts"
           }
         }
@@ -406,6 +449,7 @@
           "options": {
             "jestConfig": "libs/glossary/jest.config.js",
             "tsConfig": "libs/glossary/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/glossary/src/test-setup.ts"
           }
         }
@@ -437,6 +481,7 @@
           "options": {
             "jestConfig": "libs/home/jest.config.js",
             "tsConfig": "libs/home/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/home/src/test-setup.ts"
           }
         }
@@ -468,6 +513,7 @@
           "options": {
             "jestConfig": "libs/methodology/jest.config.js",
             "tsConfig": "libs/methodology/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/methodology/src/test-setup.ts"
           }
         }
@@ -499,6 +545,7 @@
           "options": {
             "jestConfig": "libs/not-found/jest.config.js",
             "tsConfig": "libs/not-found/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/not-found/src/test-setup.ts"
           }
         }
@@ -530,6 +577,7 @@
           "options": {
             "jestConfig": "libs/partnerships/jest.config.js",
             "tsConfig": "libs/partnerships/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/partnerships/src/test-setup.ts"
           }
         }
@@ -561,6 +609,7 @@
           "options": {
             "jestConfig": "libs/privacy-and-security/jest.config.js",
             "tsConfig": "libs/privacy-and-security/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/privacy-and-security/src/test-setup.ts"
           }
         }
@@ -592,6 +641,7 @@
           "options": {
             "jestConfig": "libs/services/jest.config.js",
             "tsConfig": "libs/services/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/services/src/test-setup.ts"
           }
         }
@@ -623,6 +673,7 @@
           "options": {
             "jestConfig": "libs/shared/jest.config.js",
             "tsConfig": "libs/shared/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/shared/src/test-setup.ts"
           }
         }
@@ -654,6 +705,7 @@
           "options": {
             "jestConfig": "libs/sitemap/jest.config.js",
             "tsConfig": "libs/sitemap/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/sitemap/src/test-setup.ts"
           }
         }
@@ -685,6 +737,7 @@
           "options": {
             "jestConfig": "libs/software-development/jest.config.js",
             "tsConfig": "libs/software-development/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/software-development/src/test-setup.ts"
           }
         }
@@ -716,6 +769,7 @@
           "options": {
             "jestConfig": "libs/terms-of-use/jest.config.js",
             "tsConfig": "libs/terms-of-use/tsconfig.spec.json",
+            "passWithNoTests": true,
             "setupFile": "libs/terms-of-use/src/test-setup.ts"
           }
         }
@@ -731,6 +785,40 @@
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"

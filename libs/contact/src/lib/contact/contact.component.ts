@@ -2,38 +2,38 @@
 // TODO: Add Google Maps component.
 // TODO: Add keeping state for contact form (it might be done using localStorage to persist data maybe) or some kind of state management using NgRx etc.
 
-import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFirestore } from '@angular/fire/firestore';
 import {
   AngularFireStorage,
   AngularFireStorageReference,
   AngularFireUploadTask,
-} from "@angular/fire/storage";
-import { catchError, finalize } from "rxjs/operators";
-import { Component } from "@angular/core";
-import { FileValidator } from "ngx-material-file-input";
+} from '@angular/fire/storage';
+import { catchError, finalize } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { FileValidator } from 'ngx-material-file-input';
 import {
   FormBuilder,
   FormGroup,
   FormGroupDirective,
   Validators,
-} from "@angular/forms";
-import { throwError } from "rxjs";
+} from '@angular/forms';
+import { throwError } from 'rxjs';
 
 // TODO: Add verbose datepicker with custom formats.
 // TODO: Change all the public to private.
 @Component({
-  selector: "app-contact",
-  templateUrl: "./contact.component.html",
-  styleUrls: ["./contact.component.scss"],
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
   public acceptedTerms = false;
   public currentDate: Date = new Date();
   public maxFileSize = 20971520;
   public servicesItems: string[] = [
-    "Cyber Security",
-    "Digital Strategy",
-    "Software Development",
+    'Cyber Security',
+    'Digital Strategy',
+    'Software Development',
   ];
   public downloadURL: string[] = [];
 
@@ -56,19 +56,19 @@ export class ContactComponent {
 
   // Create contact form with all required validators.
   public contactForm: FormGroup = this.formBuilder.group({
-    acceptedTerms: ["", Validators.required],
+    acceptedTerms: ['', Validators.required],
     fileUploader: [
-      "",
+      '',
       Validators.compose([
         FileValidator.maxContentSize(this.maxFileSize),
         Validators.maxLength(512),
         Validators.minLength(2),
       ]),
     ],
-    formControlContactPreference: "",
-    formControlDeadline: "",
+    formControlContactPreference: '',
+    formControlDeadline: '',
     formControlDescription: [
-      "",
+      '',
       Validators.compose([
         Validators.maxLength(5000),
         Validators.minLength(30),
@@ -76,7 +76,7 @@ export class ContactComponent {
       ]),
     ],
     formControlEmail: [
-      "",
+      '',
       Validators.compose([
         Validators.email,
         Validators.maxLength(512),
@@ -85,24 +85,24 @@ export class ContactComponent {
       ]),
     ],
     formControlName: [
-      "",
+      '',
       Validators.compose([
         Validators.maxLength(64),
         Validators.minLength(2),
-        Validators.pattern("^[a-zA-Z ]*$"),
+        Validators.pattern('^[a-zA-Z ]*$'),
         Validators.required,
       ]),
     ],
     formControlPhone: [
-      "",
+      '',
       Validators.compose([
         Validators.maxLength(14),
         Validators.minLength(4),
-        Validators.pattern("^[0-9]*$"),
+        Validators.pattern('^[0-9]*$'),
       ]),
     ],
-    formControlService: "",
-    recaptchaCheck: ["", Validators.required],
+    formControlService: '',
+    recaptchaCheck: ['', Validators.required],
   });
 
   /**
@@ -129,10 +129,10 @@ export class ContactComponent {
    * @returns {void}
    */
   public hasError(event: any): void {
-    if (!event && this.contactForm.value.formControlPhone !== "") {
+    if (!event && this.contactForm.value.formControlPhone !== '') {
       this.contactForm
-        .get("formControlPhone")! // Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
-        .setErrors(["invalid_cell_phone", true]);
+        .get('formControlPhone')! // Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+        .setErrors(['invalid_cell_phone', true]);
     }
   }
 
@@ -155,10 +155,11 @@ export class ContactComponent {
         this.acceptedTerms = false;
       })
       .catch(() => {
-        throw new Error("Error with submitting contact form."); // throw an Error
+        throw new Error('Error with submitting contact form.'); // throw an Error
       });
   }
 
+  // TODO: Fix this after upgrade to Angular 10 isn't working.
   /**
    * @description Upload additional files to Cloud Firestore and get URL to the files.
    * @param {any} event Object of sent files.
@@ -167,9 +168,7 @@ export class ContactComponent {
   public uploadFile(event: any): void {
     // Iterate through all uploaded files.
     for (let i = 0; i < event.target.files.length; i++) {
-      const randomId = Math.random()
-        .toString(36)
-        .substring(2); // Create random ID, so the same file names can be uploaded to Cloud Firestore.
+      const randomId = Math.random().toString(36).substring(2); // Create random ID, so the same file names can be uploaded to Cloud Firestore.
 
       const file = event.target.files[i]; // Get each uploaded file.
 

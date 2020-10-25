@@ -6,7 +6,7 @@ import { Routes, RouterModule } from "@angular/router";
 // TODO: Make the lazy loading routes with @libs (https://github.com/nrwl/nx/issues/164#issuecomment-507221072).
 // TODO: Add nested routes for services.
 // TODO: Think about routing on mobile, if the sidebar should be not closed after click.
-// TODO: Up - but what if user clicks servies, what should happen? The menu should stay open with sidebar open only for that case, or always sidenav should be open/closed? Think about it.
+// TODO: Up - but what if user clicks services, what should happen? The menu should stay open with sidebar open only for that case, or always sidenav should be open/closed? Think about it.
 const routes: Routes = [
   // TODO: Add external URL https://blog.ditectrev.com for Blog once it will be created.
   // TODO: Add external URL https://education.ditectrev.com for Education once it will be created.

@@ -1,16 +1,16 @@
-import 'hammerjs';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { GalleryComponent } from './gallery.component';
-import { NgxGalleryModule } from 'ngx-gallery';
+import "hammerjs";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { GalleryComponent } from "./gallery.component";
+import { NgxGalleryModule } from "ngx-gallery-9";
 
-describe('GalleryComponent', () => {
+describe("GalleryComponent", () => {
   let component: GalleryComponent;
   let fixture: ComponentFixture<GalleryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GalleryComponent],
-      imports: [NgxGalleryModule]
+      imports: [NgxGalleryModule],
     }).compileComponents();
   }));
 
@@ -20,12 +20,12 @@ describe('GalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create gallery component', () => {
+  it("should create gallery component", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have ngx-gallery component', () => {
+  it("should have ngx-gallery component", () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('ngx-gallery')).not.toBeNull();
+    expect(compiled.querySelector("ngx-gallery")).not.toBeNull();
   });
 });

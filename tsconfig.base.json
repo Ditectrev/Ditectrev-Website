@@ -27,7 +27,7 @@
     "alwaysStrict": true, // Parse in strict mode and emit 'use strict' for each source file.
     "noImplicitAny": true, // Raise error on expressions and declarations with an implied "any" type.
     "noImplicitThis": true, // Raise error on "this" expressions with an implied "any" type.
-    "skipLibCheck": false, // Don't skip type checking of all declaration files (*.d.ts).
+    "skipLibCheck": true, // Don't skip type checking of all declaration files (*.d.ts).
     "strictBindCallApply": true, // Enable stricter checking of of the bind, call, and apply methods on functions.
     "strictFunctionTypes": true, // Disable bivariant parameter checking for function types.
     "strictNullChecks": true, // In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
@@ -63,5 +63,5 @@
     "emitDecoratorMetadata": true, // Emit design-type metadata for decorated declarations in source.
     "stripInternal": false // Do not emit declarations for code that has an /** @internal */ JSDoc annotation.
   },
-  "exclude": ["dist", "node_modules", "tmp"]
+  "exclude": ["apps/ditectrev-e2e", "dist", "node_modules", "tmp"]
 }

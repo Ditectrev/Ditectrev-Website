@@ -1,5 +1,5 @@
 module.exports = {
-  coverageDirectory: '../../coverage/libs/partnerships',
+  coverageDirectory: './../../coverage/libs/partnerships',
   name: 'partnerships',
-  preset: '../../jest.config.js'
+  preset: './../../jest.config.js',
 };

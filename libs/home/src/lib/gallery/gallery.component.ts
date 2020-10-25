@@ -3,7 +3,7 @@ import {
   NgxGalleryAnimation,
   NgxGalleryImage,
   NgxGalleryOptions,
-} from "ngx-gallery";
+} from "ngx-gallery-9";
 
 @Component({
   selector: "app-gallery",

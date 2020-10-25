@@ -1,5 +1,5 @@
 module.exports = {
-  coverageDirectory: '../../coverage/libs/copyrights',
+  coverageDirectory: './../../coverage/libs/copyrights',
   name: 'copyrights',
-  preset: '../../jest.config.js'
+  preset: './../../jest.config.js',
 };

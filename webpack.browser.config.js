@@ -1,12 +1,10 @@
 /* Custom webpack server properties. */
 
 const dotenv = require('dotenv-webpack');
-const webpackConfig = {
-  node: { global: true, fs: 'empty' }, // Fix: "Uncaught ReferenceError: global is not defined", and "Can't resolve 'fs'".
-  output: {
-    libraryTarget: 'umd' // Fix: "Uncaught ReferenceError: exports is not defined".
-  },
-  plugins: [new dotenv()]
-};
 
-module.exports = webpackConfig; // Export all custom Webpack configs.
+module.exports = {
+  // Define plugins.
+  plugins: [
+    new dotenv(), //* Handle environemntal variables on localhost, but on the Server-Side Rendering (SSR). There's no access to "process.env" on the browser.
+  ],
+};

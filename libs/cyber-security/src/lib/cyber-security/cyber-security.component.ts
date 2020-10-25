@@ -18,7 +18,7 @@ export class CyberSecurityComponent {
   }[] = [
     {
       description:
-        "Classifications, E-Law Advisory, General Data Protection Regulation (GDPR), International Organization for Standardization (ISO) 27001, Privacy Audits, Privacy by Design.",
+        "Classifications, E-Law Advisory, General Data Protection Regulation (GDPR), International Organization for Standardization (ISO) 27001, Privacy Audits.",
       name: "Compliance Audits",
       src: "assets/services/cyber-security/01_compliance_audits.png",
     },
@@ -57,7 +57,7 @@ export class CyberSecurityComponent {
     },
     {
       description:
-        "Secure Software Development Life Cycle (SSDLC), Security First, Software Development.",
+        "Privacy by Design & Security, Secure Software Development Life Cycle (SSDLC), Security First, Software Development.",
       name: "Secure Programming",
       src: "assets/services/cyber-security/08_secure_programming.png",
     },
@@ -69,7 +69,7 @@ export class CyberSecurityComponent {
     },
     {
       description:
-        "Blue & Red Teaming, Computer Security Incident Response Team (CSIRT), Cyber Risk Governance.",
+        "Blue & Red Teaming, Computer Security Incident Response Team (CSIRT), Cyber Risk Governance, Identity Management.",
       name: "Systems Security",
       src: "assets/services/cyber-security/10_systems_security.png",
     },

@@ -24,7 +24,7 @@ export class SoftwareDevelopmentComponent {
     },
     {
       description:
-        "Cloud Security, Cloud Infrastructure, DevOps, DevSecOps, SecDevOps, Serverless.",
+        "Cloud Security, Cloud Infrastructure, DevOps, DevSecOps, Orchestration, SecDevOps, Serverless.",
       name: "Cloud Solutions",
       src: "assets/services/software-development/02_cloud_solutions.png",
     },

@@ -104,6 +104,7 @@ mat-tab-body {
 }
 
 // Remove unecessary default padding for first and last cell enforced by Angular Material on small and medium devices.
+// TODO: Use "clamp()" for fonts a.k.a. Fluid Typography.
 @media (max-width: 960px) {
   mat-cell {
     &:first-of-type,

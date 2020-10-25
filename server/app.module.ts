@@ -1,6 +1,8 @@
-import { AngularUniversalModule, applyDomino } from "@nestjs/ng-universal";
-import { join } from "path";
-import { Module } from "@nestjs/common";
+// import { AngularUniversalModule, applyDomino } from '@nestjs/ng-universal';
+import { AngularUniversalModule } from '@nestjs/ng-universal';
+import { AppServerModule } from './../apps/ditectrev/src/app/app.server.module';
+import { join } from 'path';
+import { Module } from '@nestjs/common';
 
 // Get working directory of client bundle.
 // const BROWSER_DIR = join(
@@ -10,15 +12,14 @@ import { Module } from "@nestjs/common";
 //   'apps',
 //   'ditectrev-browser'
 // ); // Use when testing locally without Firebase Cloud Functions solely on NestJS.
-const BROWSER_DIR = join(process.cwd(), "dist/apps/ditectrev-browser"); // Use when deploying to & testing with Firebase Cloud Functions.
+const BROWSER_DIR = join(process.cwd(), 'dist/apps/ditectrev-browser'); // Use when deploying to & testing with Firebase Cloud Functions.
 
-applyDomino(global, join(BROWSER_DIR, "index2.html")); // Mock document, window etc.
-
+// applyDomino(global, join(BROWSER_DIR, 'index2.html')); // Mock document, window etc.
 @Module({
   imports: [
     AngularUniversalModule.forRoot({
-      bundle: require("./../functions/dist/apps/ditectrev-server/main"), // Bundle is created dynamically during build process.
-      templatePath: join(BROWSER_DIR, "index2.html"),
+      bootstrap: AppServerModule,
+      templatePath: join(BROWSER_DIR, 'index2.html'), //! That's needed, otherwise there are problems with rendering Firebase on root and NestJS returns ERROR "Failed to lookup view “index” in views directory".
       viewsPath: BROWSER_DIR,
     }),
   ],

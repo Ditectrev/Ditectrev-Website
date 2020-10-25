@@ -48,7 +48,7 @@ export class DigitalStrategyComponent {
     },
     {
       description:
-        "Brand Building & Communication, Conversion Rate Optimization (CRO), Search Engine Marketing (SEM), Social Media Marketing.",
+        "Advertising, Brand Building & Communication, Conversion Rate Optimization (CRO), Growth Hacking, Search Engine Marketing (SEM), Social Media Marketing, Viral Marketing.",
       name: "Digital Marketing",
       src: "assets/services/digital-strategy/06_digital_marketing.png",
     },

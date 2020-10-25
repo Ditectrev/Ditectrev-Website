@@ -1,5 +1,5 @@
 module.exports = {
-  coverageDirectory: '../../coverage/libs/digital-strategy',
+  coverageDirectory: './../../coverage/libs/digital-strategy',
   name: 'digital-strategy',
-  preset: '../../jest.config.js'
+  preset: './../../jest.config.js',
 };
