@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { Component } from '@angular/core';
 import {
   faAt,
@@ -128,15 +129,27 @@ export class FooterComponent {
     this.httpClient.jsonp<ResponseMailChimp>(urlMailChimp, 'c').subscribe(
       (response) => {
         if (response.result && response.result !== 'error') {
+          Swal.fire(
+            'Subscribed.',
+            'Thank you for subscribing to our mailing news. Shortly you will receive further instructions.',
+            'success'
+          );
           this.submitted = true;
-          alert('Thank you for subscribing into our list.'); // TODO: Make this a SweetAlert (as any other user interaction).
         } else {
-          alert('An error occured, our apologizes.'); // TODO: Make this a SweetAlert (as any other user interaction).
+          Swal.fire(
+            'Error occurred.',
+            'It was not possible to subscribe to our newsletter. Please try again or contact us directly.',
+            'error'
+          );
         }
       },
       (error) => {
+        Swal.fire(
+          'Error occurred.',
+          'It was not possible to subscribe to our newsletter. Please try again or contact us directly.',
+          'error'
+        );
         console.error(error); // TODO: Remove this or make this as Sentry (as well as add contact error handling to Sentry).
-        alert('An error occured, our apologizes.'); // TODO: Make this a SweetAlert (as any other user interaction).
       }
     );
     this.formControlEmail.reset(); // Reset the mail input.

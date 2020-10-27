@@ -1,7 +1,7 @@
-// TODO: Add SweetAlerts with a progressbar on form reset, control behaviour of the form with errors.
 // TODO: Add Google Maps component.
 // TODO: Add keeping state for contact form (it might be done using localStorage to persist data maybe) or some kind of state management using NgRx etc.
 
+import Swal from 'sweetalert2';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {
   AngularFireStorage,
@@ -146,15 +146,26 @@ export class ContactComponent {
     form.fileUploader = this.downloadURL;
 
     // TODO: Check if it works on deployment.
+    // TODO: Add progressbar on file upload.
     this.angularFirestore
       .collection(String(process.env.FIRESTORE_COLLECTION_MESSAGES)) // Make sure the environmental variable is a string.
       .add(form)
       .then(() => {
+        Swal.fire(
+          'E-mail sent to us.',
+          'Thank you for filling and sending this contact form. We will get back to you as fast as possible.',
+          'success'
+        );
         this.contactForm.reset(); // Reset form once user will click "Send Message".
         formDirective.resetForm(); // Reset validators, i.e. to workaround #4190 (https://github.com/angular/components/issues/4190).
         this.acceptedTerms = false;
       })
       .catch(() => {
+        Swal.fire(
+          'Error occurred.',
+          'It was not possible to send the contact form. Please try again or contact us directly.',
+          'error'
+        );
         throw new Error('Error with submitting contact form.'); // throw an Error
       });
   }
