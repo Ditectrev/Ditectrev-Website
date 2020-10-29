@@ -1,6 +1,16 @@
 module.exports = {
   coverageDirectory: './../../coverage/libs/contact',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
+      astTransformers: [
+        'jest-preset-angular/build/InlineFilesTransformer',
+        'jest-preset-angular/build/StripStylesTransformer',
+      ],
+    },
+  },
   name: 'contact',
   preset: './../../jest.config.js',
-  transformIgnorePatterns: ['../../node_modules/(?!${ng2-tel-input})'], // Required to avoid failing tests due to importing ES6 modules (here: ng2-tel-input module) from node_modules.
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
 };

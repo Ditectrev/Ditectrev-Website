@@ -1,6 +1,16 @@
 module.exports = {
-  coverageDirectory: '../../coverage/libs/about-us',
+  coverageDirectory: './../../coverage/libs/about-us',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
+      astTransformers: [
+        'jest-preset-angular/build/InlineFilesTransformer',
+        'jest-preset-angular/build/StripStylesTransformer',
+      ],
+    },
+  },
   name: 'about-us',
-  preset: '../../jest.config.js',
-  transformIgnorePatterns: ['../../node_modules/(?!${ng-circle-progress})'], // Required to avoid failing tests due to importing ES6 modules (here: ng-circle-progress) from node_modules.
+  preset: './../../jest.config.js',
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
 };

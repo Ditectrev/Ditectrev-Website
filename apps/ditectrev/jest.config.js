@@ -1,9 +1,16 @@
 module.exports = {
   coverageDirectory: './../../coverage/apps/ditectrev/',
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
+      astTransformers: [
+        'jest-preset-angular/build/InlineFilesTransformer',
+        'jest-preset-angular/build/StripStylesTransformer',
+      ],
+    },
+  },
   name: 'ditectrev',
   preset: './../../jest.config.js',
-  setupFiles: [
-    './../../node_modules/particles.js/particles.js', // Replace import * as particlesJS from 'particles.js' in the test file.
-    './../../node_modules/jest-canvas-mock/lib/index.js', // Get rid off HTMLCanvasElement.prototype.getContext, and canvas errors. Now no need to mock in the test file explicitly.
-  ],
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
 };

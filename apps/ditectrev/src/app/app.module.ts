@@ -2,7 +2,7 @@
 // TODO: Check TSLint options.
 // TODO: Check compiler options.
 // TODO: Check angular.json and all compiling options.
-// TODO: Fix unit tests from pipeline, after upgrade running "ng test" runs only 1 project and has problem (https://stackoverflow.com/questions/42260218/jest-setup-syntaxerror-unexpected-token-export and https://github.com/nrwl/nx/issues/2815, https://github.com/nrwl/nx/issues/3191#issuecomment-648688856 partially not running tests at all) to run at all btw, so fix it too.
+// TODO: Fix unit tests from pipeline/npm run test runs only first test, ng test is required. Looks like now "npx nx run-many --all --target=test --parallel" is the way to go.
 // TODO: Check VSCode options.
 // TODO: Add Docker Bench Security.
 // TODO: Make error handling to Sentry, just be sure source maps aren't deployed to the hosting, only to Sentry (https://medium.com/angular-in-depth/debug-angular-apps-in-production-without-revealing-source-maps-ab4a235edd85).
