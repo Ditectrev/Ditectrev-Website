@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '^lodash-es$': 'lodash',
+    '^lodash-es$': 'lodash', //! Fix ERROR "export { default as add } from './add.js';^^^^^^SyntaxError: Unexpected token export".
   },
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
