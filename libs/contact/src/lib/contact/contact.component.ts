@@ -1,5 +1,6 @@
 // TODO: Add Google Maps component.
 // TODO: Add keeping state for contact form (it might be done using localStorage to persist data maybe) or some kind of state management using NgRx etc.
+// TODO: Read input length from file upload.
 
 import Swal from 'sweetalert2';
 import { AngularFirestore } from '@angular/fire/firestore';
