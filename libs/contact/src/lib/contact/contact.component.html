@@ -1,3 +1,4 @@
+<!-- TODO: Check out if dynamically generating validation attribute on input using interpolation is possible. -->
 <section aria-label="This is Contact page to contact with us.">
   <!-- Card container that binds all together. -->
   <mat-card
@@ -40,6 +41,13 @@
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
+          <mat-hint align="end"
+            >{{ contactForm.get('formControlName')!.value.length }} /
+            64</mat-hint
+          >
+          <!--
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+          -->
           <mat-error *ngIf="!contactForm.get('formControlName')!.valid"
             >This is an <strong>invalid</strong> a full name.
           </mat-error>
@@ -55,6 +63,13 @@
             type="email"
           />
           <mat-hint>Provide valid email address.</mat-hint>
+          <!--
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+          -->
+          <mat-hint align="end"
+            >{{ contactForm.get('formControlEmail')!.value.length }} /
+            512</mat-hint
+          >
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
@@ -95,14 +110,18 @@
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
+          <mat-hint align="end"
+            >{{ contactForm.get('formControlPhone')!.value.length }} /
+            14</mat-hint
+          >
+          <!--
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+          -->
           <mat-error *ngIf="!contactForm.get('formControlPhone')!.valid"
             >This is an <strong>invalid</strong> phone number.
           </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <!--
-            TODO: Check why the message doesn't appear instantly, even though validation is correct.
-          -->
           <input
             matInput
             [matDatepicker]="deadlineDatepicker"
@@ -143,6 +162,13 @@
             title="Project description"
           ></textarea>
           <mat-hint>Description for your project.</mat-hint>
+          <!--
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+          -->
+          <mat-hint align="end"
+            >{{ contactForm.get('formControlDescription')!.value.length }} /
+            5000</mat-hint
+          >
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
@@ -190,13 +216,13 @@
             <strong
               >maximum acceptable upload size is
               {{
-                contactForm.get("fileUploader")?.getError("maxContentSize")
+                contactForm.get('fileUploader')?.getError('maxContentSize')
                   .maxSize | byteFormat
               }}</strong
             >
             (uploaded size:
             {{
-              contactForm.get("fileUploader")?.getError("maxContentSize")
+              contactForm.get('fileUploader')?.getError('maxContentSize')
                 .actualSize | byteFormat
             }}).
           </mat-error>
