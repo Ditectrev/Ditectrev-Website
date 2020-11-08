@@ -1,6 +1,5 @@
 // TODO: Add Google Maps component.
 // TODO: Add keeping state for contact form (it might be done using localStorage to persist data maybe) or some kind of state management using NgRx etc.
-// TODO: Add counter for input fields once issue #20902 (https://github.com/angular/components/issues/20902) will be fixed.
 
 import Swal from 'sweetalert2';
 import { AngularFirestore } from '@angular/fire/firestore';
