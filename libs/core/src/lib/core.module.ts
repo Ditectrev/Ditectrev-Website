@@ -3,27 +3,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   HttpClientModule,
   HttpClientJsonpModule,
-  HttpClientXsrfModule
+  HttpClientXsrfModule,
 } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 @NgModule({
-  exports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    HttpClientJsonpModule
-  ],
+  exports: [BrowserAnimationsModule, HttpClientModule, HttpClientJsonpModule],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ditectrevSSR' }), // Unique name across the application. However, some names (e.g. ditectrev.com) causes loosing of defined in component styles.,,
     BrowserAnimationsModule,
     HttpClientModule,
     HttpClientJsonpModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
-      headerName: 'X-XSRF-TOKEN'
-    })
-  ]
+      headerName: 'X-XSRF-TOKEN',
+    }),
+  ],
 })
 // TODO: Make unit test for this.
 export class CoreModule {

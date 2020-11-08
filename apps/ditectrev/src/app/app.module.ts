@@ -21,7 +21,6 @@
 
 // import Agastya from 'agastya';
 import { AppComponent } from './app.component';
-import { BrowserModule } from '@angular/platform-browser'; // TODO: Is it required here? BrowserModule is imported in CoreModule already.
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { CoreModule } from './../../../../libs/core/src/index';
 import { environment } from '../environments/environment';
@@ -39,7 +38,6 @@ import { SharedModule } from './../../../../libs/shared/src/index';
   bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ditectrevSSR' }), // Unique name across the application. However, some names (e.g. ditectrev.com) causes loosing of defined in component styles.
     CoreModule,
     HomeModule,
     RoutingModule,
