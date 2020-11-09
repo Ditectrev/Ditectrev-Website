@@ -1,4 +1,3 @@
-<!-- TODO: Check out if dynamically generating validation attribute on input using interpolation is possible. -->
 <section aria-label="This is Contact page to contact with us.">
   <!-- Card container that binds all together. -->
   <mat-card
@@ -43,7 +42,7 @@
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlName')!.value.length }} /
-            64</mat-hint
+            {{ validatorNameMaxLength }}</mat-hint
           >
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
@@ -68,7 +67,7 @@
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlEmail')!.value.length }} /
-            512</mat-hint
+            {{ validatorEmailMaxLength }}</mat-hint
           >
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
@@ -112,7 +111,7 @@
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlPhone')!.value.length }} /
-            14</mat-hint
+            {{ validatorPhoneMaxLength }}</mat-hint
           >
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
@@ -167,14 +166,17 @@
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlDescription')!.value.length }} /
-            5000</mat-hint
+            {{ validatorDescriptionMaxLength }}</mat-hint
           >
           <!--
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
           <mat-error *ngIf="!contactForm.get('formControlDescription')!.valid"
             >Description of the project is expected to have
-            <strong>between 30 and 5000 characters.</strong>
+            <strong
+              >between {{ validatorDescriptionMinLength }} and
+              {{ validatorDescriptionMaxLength }} characters.</strong
+            >
           </mat-error>
         </mat-form-field>
         <mat-form-field>

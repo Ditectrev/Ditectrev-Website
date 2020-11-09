@@ -30,13 +30,21 @@ import { throwError } from 'rxjs';
 export class ContactComponent {
   public acceptedTerms = false;
   public currentDate: Date = new Date();
+  public downloadURL: string[] = [];
   public maxFileSize = 20971520;
   public servicesItems: string[] = [
     'Cyber Security',
     'Digital Strategy',
     'Software Development',
   ];
-  public downloadURL: string[] = [];
+  public validatorDescriptionMaxLength: number = 5000;
+  public validatorDescriptionMinLength: number = 30;
+  public validatorEmailMaxLength: number = 512;
+  public validatorEmailMinLength: number = 6;
+  public validatorNameMaxLength: number = 64;
+  public validatorNameMinLength: number = 2;
+  public validatorPhoneMaxLength: number = 14;
+  public validatorPhoneMinLength: number = 4;
 
   // Create max deadline dynamically 5 years from now.
   public day: number = this.currentDate.getDate();
@@ -71,8 +79,8 @@ export class ContactComponent {
     formControlDescription: [
       '',
       Validators.compose([
-        Validators.maxLength(5000),
-        Validators.minLength(30),
+        Validators.maxLength(this.validatorDescriptionMaxLength),
+        Validators.minLength(this.validatorDescriptionMinLength),
         Validators.required,
       ]),
     ],
@@ -80,16 +88,16 @@ export class ContactComponent {
       '',
       Validators.compose([
         Validators.email,
-        Validators.maxLength(512),
-        Validators.minLength(6),
+        Validators.maxLength(this.validatorEmailMaxLength),
+        Validators.minLength(this.validatorEmailMinLength),
         Validators.required,
       ]),
     ],
     formControlName: [
       '',
       Validators.compose([
-        Validators.maxLength(64),
-        Validators.minLength(2),
+        Validators.maxLength(this.validatorNameMaxLength),
+        Validators.minLength(this.validatorNameMinLength),
         Validators.pattern('^[a-zA-Z ]*$'),
         Validators.required,
       ]),
@@ -97,8 +105,8 @@ export class ContactComponent {
     formControlPhone: [
       '',
       Validators.compose([
-        Validators.maxLength(14),
-        Validators.minLength(4),
+        Validators.maxLength(this.validatorPhoneMaxLength),
+        Validators.minLength(this.validatorPhoneMinLength),
         Validators.pattern('^[0-9]*$'),
       ]),
     ],
