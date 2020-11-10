@@ -37,6 +37,7 @@ export class ContactComponent {
     'Digital Strategy',
     'Software Development',
   ];
+  // TODO: Make this an interface.
   public validatorDescriptionMaxLength: number = 5000;
   public validatorDescriptionMinLength: number = 30;
   public validatorEmailMaxLength: number = 512;
