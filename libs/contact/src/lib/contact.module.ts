@@ -32,7 +32,7 @@ import { SharedModule } from './../../../../libs/shared/src/index';
   ],
   providers: [
     {
-      provide: RECAPTCHA_SETTINGS, // TODO: Try reCAPTCHA v3.
+      provide: RECAPTCHA_SETTINGS,
       useValue: {
         siteKey: String(process.env.RECAPTCHA_API_KEY), // TODO: It causes problem when it goes from GitLab CI/SSR.
       } as RecaptchaSettings,
