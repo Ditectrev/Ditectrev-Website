@@ -17,7 +17,6 @@
 // TODO: Make CSS and HTML alphabetically (only these are missing).
 // TODO: Convert all PNG files to SVG, alternatively some to AVIF.
 // TODO: Use native lazy loading on images (loading="lazy").
-// TODO: Automate renaming "main.js" from "functions/dist/apps/ditectrev-server" to "index.js" in the root.
 
 // import Agastya from 'agastya';
 import { AppComponent } from './app.component';
