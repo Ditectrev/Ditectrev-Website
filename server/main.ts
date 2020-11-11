@@ -53,75 +53,75 @@ async function bootstrap() {
     })
   );
 
-  expressApp.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        baseUri: ["'self'"], // Restricts use of the "<base>" tag to origin (without subdomains). This directive doesn't use "default-src" as fallback, thus by default it allows anything.
-        blockAllMixedContent: true, // Prevent loading any assets using HTTP when the page is loaded using HTTPS.
-        childSrc: [
-          "'self'", // Default policy for valid sources for web workers and nested browsing contexts loaded using elements such as "<frame>" and "<iframe>": allow all content coming from origin (without subdomains).
-          'https://vars.hotjar.com', // Hotjar.
-        ],
-        connectSrc: [
-          "'self'", // Default policy for restricting the URLs which can be loaded using script interfaces: allow all content coming from origin (without subdomains).
-          'https://agastya-version.oswaldlabs.com', // Agastya.
-          'https://firebasestorage.googleapis.com', // Cloud Storage for Firebase.
-          'https://firestore.googleapis.com', // Cloud Firestore.
-          'https://platform-beta.oswaldlabs.com', // Agastya.
-          'https://www.google-analytics.com', // Universal Analytics (Google Analytics).
-          'https://*.hotjar.com:*', // Hotjar.
-          'https://vc.hotjar.io:*', // Hotjar.
-          'wss://*.hotjar.com', // Hotjar.
-        ],
-        defaultSrc: [
-          "'none'", // Default policy for fallback for the other CSP fetch directives [Link of these: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src]: disallows everything.
-        ],
-        fontSrc: [
-          "'self'", // Default policy for specifiying valid sources for fonts loaded using "@font-face": allow all content coming from origin (without subdomains).
-          'https://fonts.gstatic.com', // Google Fonts.
-          'https://script.hotjar.com', // Hotjar.
-        ],
-        formAction: ["'self'"], // Default policy for restricting the URLs which can be used as the target of a form submissions from a given context: allow all content coming from origin (without subdomains). This directive doesn't use "default-src" as fallback, thus by default it allows anything.
-        frameAncestors: ["'self'"], // Default policy for specyfing valid parents that may embed a page using "<frame>", "<iframe>", "<object>", "<embed>", or "<applet>". This directive doesn't use "default-src" as fallback, thus by default it allows anything. This is basically clickjacking protection.
-        frameSrc: [
-          "'self'", // Default policy for specyfing valid sources for nested browsing contexts loading using elements such as "<frame>" and "<iframe>": allow all content coming from origin (without subdomains).
-          'https://agastya-version.oswaldlabs.com', // Agastya.
-          'https://vars.hotjar.com', // Hotjar.
-          'https://www.google.com', // reCAPTCHA.
-        ],
-        imgSrc: [
-          "'self'", // Default policy for specyfing valid sources of images and favicons: allow all content coming from origin (without subdomains).
-          'https://www.google-analytics.com', // Universal Analytics (Google Analytics).
-          'https://www.googletagmanager.com', // Google Tag Manager.
-          'https://www.google.com', // reCAPTCHA.
-          'https://script.hotjar.com', // Hotjar.
-        ],
-        manifestSrc: ["'self'"], // Default policy for specyfing which manifest can be applied to the resource: allow all content coming from origin (without subdomains).
-        objectSrc: ["'none'"], // Default policy for specyfing valid sources for the "<object>", "<embed>", and "<applet>" elements. It also influences "pluginType" by disallowing all of them. The "pluginType" directive doesn't use "default-src" as fallback, thus by default it allows anything.
-        scriptSrc: [
-          "'self'", // Default policy for valid sources for JavaScript: allow all content coming from origin (without subdomains).
-          "'unsafe-eval'", // Unsecure, but required due to Angular's SSR.
-          'https://agastya-version.oswaldlabs.com', // Agastya.
-          'https://ditectrev.us15.list-manage.com', // MailChimp.
-          'https://platform.oswaldlabs.com', // Agastya.
-          'https://platform-beta.oswaldlabs.com', // Agastya.
-          'https://script.hotjar.com', // Hotjar.
-          'https://static.hotjar.com', // Hotjar.
-          'https://ssl.google-analytics.com', // Universal Analytics (Google Analytics).
-          'https://www.google-analytics.com', // Universal Analytics (Google Analytics).
-          'https://www.googletagmanager.com', // Google Tag Manager.
-          'https://www.google.com', // reCAPTCHA.
-          'https://www.gstatic.com', // reCAPTCHA.
-        ],
-        styleSrc: [
-          "'self'", // Default policy for valid sources for stylesheets: allow all content coming from origin (without subdomains).
-          "'unsafe-inline'", // Unsecure, but required in order to render styles generated by Angular compiler, which on SSR are generated as inline styles.
-          'https://fonts.googleapis.com', // Google Fonts.
-        ],
-        upgradeInsecureRequests: true, // Block loading of active/passive content over insecure FTP/HTTP by "upgrading" the connection to secure SFTP/HTTPS.
-      },
-    })
-  );
+  // expressApp.use(
+  //   helmet.contentSecurityPolicy({
+  //     directives: {
+  //       baseUri: ["'self'"], // Restricts use of the "<base>" tag to origin (without subdomains). This directive doesn't use "default-src" as fallback, thus by default it allows anything.
+  //       blockAllMixedContent: true, // Prevent loading any assets using HTTP when the page is loaded using HTTPS.
+  //       childSrc: [
+  //         "'self'", // Default policy for valid sources for web workers and nested browsing contexts loaded using elements such as "<frame>" and "<iframe>": allow all content coming from origin (without subdomains).
+  //         'https://vars.hotjar.com', // Hotjar.
+  //       ],
+  //       connectSrc: [
+  //         "'self'", // Default policy for restricting the URLs which can be loaded using script interfaces: allow all content coming from origin (without subdomains).
+  //         'https://agastya-version.oswaldlabs.com', // Agastya.
+  //         'https://firebasestorage.googleapis.com', // Cloud Storage for Firebase.
+  //         'https://firestore.googleapis.com', // Cloud Firestore.
+  //         'https://platform-beta.oswaldlabs.com', // Agastya.
+  //         'https://www.google-analytics.com', // Universal Analytics (Google Analytics).
+  //         'https://*.hotjar.com:*', // Hotjar.
+  //         'https://vc.hotjar.io:*', // Hotjar.
+  //         'wss://*.hotjar.com', // Hotjar.
+  //       ],
+  //       defaultSrc: [
+  //         "'none'", // Default policy for fallback for the other CSP fetch directives [Link of these: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src]: disallows everything.
+  //       ],
+  //       fontSrc: [
+  //         "'self'", // Default policy for specifiying valid sources for fonts loaded using "@font-face": allow all content coming from origin (without subdomains).
+  //         'https://fonts.gstatic.com', // Google Fonts.
+  //         'https://script.hotjar.com', // Hotjar.
+  //       ],
+  //       formAction: ["'self'"], // Default policy for restricting the URLs which can be used as the target of a form submissions from a given context: allow all content coming from origin (without subdomains). This directive doesn't use "default-src" as fallback, thus by default it allows anything.
+  //       frameAncestors: ["'self'"], // Default policy for specyfing valid parents that may embed a page using "<frame>", "<iframe>", "<object>", "<embed>", or "<applet>". This directive doesn't use "default-src" as fallback, thus by default it allows anything. This is basically clickjacking protection.
+  //       frameSrc: [
+  //         "'self'", // Default policy for specyfing valid sources for nested browsing contexts loading using elements such as "<frame>" and "<iframe>": allow all content coming from origin (without subdomains).
+  //         'https://agastya-version.oswaldlabs.com', // Agastya.
+  //         'https://vars.hotjar.com', // Hotjar.
+  //         'https://www.google.com', // reCAPTCHA.
+  //       ],
+  //       imgSrc: [
+  //         "'self'", // Default policy for specyfing valid sources of images and favicons: allow all content coming from origin (without subdomains).
+  //         'https://www.google-analytics.com', // Universal Analytics (Google Analytics).
+  //         'https://www.googletagmanager.com', // Google Tag Manager.
+  //         'https://www.google.com', // reCAPTCHA.
+  //         'https://script.hotjar.com', // Hotjar.
+  //       ],
+  //       manifestSrc: ["'self'"], // Default policy for specyfing which manifest can be applied to the resource: allow all content coming from origin (without subdomains).
+  //       objectSrc: ["'none'"], // Default policy for specyfing valid sources for the "<object>", "<embed>", and "<applet>" elements. It also influences "pluginType" by disallowing all of them. The "pluginType" directive doesn't use "default-src" as fallback, thus by default it allows anything.
+  //       scriptSrc: [
+  //         "'self'", // Default policy for valid sources for JavaScript: allow all content coming from origin (without subdomains).
+  //         "'unsafe-eval'", // Unsecure, but required due to Angular's SSR.
+  //         'https://agastya-version.oswaldlabs.com', // Agastya.
+  //         'https://ditectrev.us15.list-manage.com', // MailChimp.
+  //         'https://platform.oswaldlabs.com', // Agastya.
+  //         'https://platform-beta.oswaldlabs.com', // Agastya.
+  //         'https://script.hotjar.com', // Hotjar.
+  //         'https://static.hotjar.com', // Hotjar.
+  //         'https://ssl.google-analytics.com', // Universal Analytics (Google Analytics).
+  //         'https://www.google-analytics.com', // Universal Analytics (Google Analytics).
+  //         'https://www.googletagmanager.com', // Google Tag Manager.
+  //         'https://www.google.com', // reCAPTCHA.
+  //         'https://www.gstatic.com', // reCAPTCHA.
+  //       ],
+  //       styleSrc: [
+  //         "'self'", // Default policy for valid sources for stylesheets: allow all content coming from origin (without subdomains).
+  //         "'unsafe-inline'", // Unsecure, but required in order to render styles generated by Angular compiler, which on SSR are generated as inline styles.
+  //         'https://fonts.googleapis.com', // Google Fonts.
+  //       ],
+  //       upgradeInsecureRequests: true, // Block loading of active/passive content over insecure FTP/HTTP by "upgrading" the connection to secure SFTP/HTTPS.
+  //     },
+  //   })
+  // );
 
   expressApp.use(helmet.permittedCrossDomainPolicies()); // Prevent Adobe Flash and Adobe Acrobat from loading content.
 
@@ -134,17 +134,17 @@ async function bootstrap() {
   );
 
   // Limit website features by implementing Feature Policy.
-  expressApp.use(
-    helmet.featurePolicy({
-      features: {
-        fullscreen: ["'self'"],
-        payment: ["'none'"],
-        syncXhr: ["'none'"],
-      },
-    })
-  );
+  // expressApp.use(
+  //   helmet.featurePolicy({
+  //     features: {
+  //       fullscreen: ["'self'"],
+  //       payment: ["'none'"],
+  //       syncXhr: ["'none'"],
+  //     },
+  //   })
+  // );
 
-  expressApp.use(helmet.noCache()); // Disable client-side caching.
+  // expressApp.use(helmet.noCache()); // Disable client-side caching.
   expressApp.use(helmet.referrerPolicy({ policy: 'same-origin' })); // Send Referer header only for pages on the same origin.
 
   // Handle HTTP POST request and expose it on "req.body".
