@@ -9,7 +9,7 @@
     "src/main.browser.ts",
     "src/polyfills.ts"
   ],
-  // IMPORTANT: in order to enable lazy loading in Nx these paths must be absolute in this file.
+  // !IMPORTANT: in order to enable lazy loading in Nx these paths must be absolute in this file.
   "include": [
     "./../../libs/about-us/src/index.ts",
     "./../../libs/contact/src/index.ts",
