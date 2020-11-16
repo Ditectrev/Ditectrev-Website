@@ -162,7 +162,7 @@ export class ContactComponent {
       .add(form)
       .then(() => {
         Swal.fire(
-          'E-mail sent to us.',
+          'E-mail sent to us.', // TODO: Unify all "Email" to "E-mail".
           'Thank you for filling and sending this contact form. We will get back to you as fast as possible.',
           'success'
         );
