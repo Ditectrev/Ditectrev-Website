@@ -7,6 +7,7 @@
     gdAlignRows.lt-md="space-evenly center"
     role="region"
   >
+    <!-- TODO: Rethink the "cdk-visually-hidden" here and in other places. -->
     <span class="cdk-visually-hidden"
       >This is a footer. These are footer elements.</span
     >
@@ -169,7 +170,7 @@
     </div>
     <div gdArea="copyrights" gdGridAlign="center center" role="region">
       <p aria-label="These are copyrights." title="Copyright &copy; Ditectrev">
-        &copy; {{ currentDate | amDateFormat: "YYYY" }} Ditectrev
+        &copy; {{ currentDate | amDateFormat: 'YYYY' }} Ditectrev
       </p>
     </div>
   </aside>
