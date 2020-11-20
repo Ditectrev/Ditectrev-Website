@@ -42,7 +42,7 @@ const mailTransport = nodemailer.createTransport({
 // Create and init NestJS application based on Express instance.
 async function bootstrap() {
   expressApp.use(logger('dev')); // Use logging.
-  expressApp.use(helmet()); // Enable Helmet's 7 default middleware protections, i.e. dnsPrefetchControl, frameguard, hidePoweredBy, hsts, ieNoOpen, noSniff and xssFilter. // TODO: Check each of Helmet's options.
+  // expressApp.use(helmet()); // Enable Helmet's 7 default middleware protections, i.e. dnsPrefetchControl, frameguard, hidePoweredBy, hsts, ieNoOpen, noSniff and xssFilter. // TODO: Check each of Helmet's options.
 
   // Preload HTTP Strict Transport Security (HSTS).
   expressApp.use(
