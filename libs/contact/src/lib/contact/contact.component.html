@@ -41,7 +41,7 @@
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
           <mat-hint align="end"
-            >{{ contactForm.get('formControlName')!.value.length }} /
+            >{{ contactForm.get('formControlName')!.value?.length }} /
             {{ validatorNameMaxLength }}</mat-hint
           >
           <!--
@@ -66,7 +66,7 @@
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
           <mat-hint align="end"
-            >{{ contactForm.get('formControlEmail')!.value.length }} /
+            >{{ contactForm.get('formControlEmail')!.value?.length }} /
             {{ validatorEmailMaxLength }}</mat-hint
           >
           <!--
@@ -110,7 +110,7 @@
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
           <mat-hint align="end"
-            >{{ contactForm.get('formControlPhone')!.value.length }} /
+            >{{ contactForm.get('formControlPhone')!.value?.length }} /
             {{ validatorPhoneMaxLength }}</mat-hint
           >
           <!--
@@ -165,7 +165,7 @@
             Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
           -->
           <mat-hint align="end"
-            >{{ contactForm.get('formControlDescription')!.value.length }} /
+            >{{ contactForm.get('formControlDescription')!.value?.length }} /
             {{ validatorDescriptionMaxLength }}</mat-hint
           >
           <!--
