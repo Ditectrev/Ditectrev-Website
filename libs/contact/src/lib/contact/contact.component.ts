@@ -180,7 +180,6 @@ export class ContactComponent {
       });
   }
 
-  // TODO: Fix this after upgrade to Angular 10 isn't working.
   /**
    * @description Upload additional files to Cloud Firestore and get URL to the files.
    * @param {any} event Object of sent files.
