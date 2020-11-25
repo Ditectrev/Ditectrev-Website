@@ -38,7 +38,7 @@
           />
           <mat-hint>Write your name.</mat-hint>
           <!--
-            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists. In addition to that, the safe navigation operator stops evaluating when it finds "null" or "undefined", which throws errors when reseting the form.
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlName')!.value?.length }} /
@@ -63,7 +63,7 @@
           />
           <mat-hint>Provide valid email address.</mat-hint>
           <!--
-            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists. In addition to that, the safe navigation operator stops evaluating when it finds "null" or "undefined", which throws errors when reseting the form.
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlEmail')!.value?.length }} /
@@ -107,7 +107,7 @@
           <mat-icon matSuffix>phone</mat-icon>
           <mat-hint>Your phone number with country prefix.</mat-hint>
           <!--
-            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists. In addition to that, the safe navigation operator stops evaluating when it finds "null" or "undefined", which throws errors when reseting the form.
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlPhone')!.value?.length }} /
@@ -162,7 +162,7 @@
           ></textarea>
           <mat-hint>Description for your project.</mat-hint>
           <!--
-            Non-null assertion operator is required to let know the compiler that this value is not empty and exists.
+            Non-null assertion operator is required to let know the compiler that this value is not empty and exists. In addition to that, the safe navigation operator stops evaluating when it finds "null" or "undefined", which throws errors when reseting the form.
           -->
           <mat-hint align="end"
             >{{ contactForm.get('formControlDescription')!.value?.length }} /
