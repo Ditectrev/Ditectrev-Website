@@ -1,5 +1,4 @@
 // TODO: Name all colors.
-// TODO: Make mat-card styling here.
 
 a {
   text-decoration: none;
@@ -69,17 +68,31 @@ footer {
   }
 }
 
-html,
-body {
+body,
+html {
   height: 100%;
+}
+
+h1 {
+  text-align: center;
 }
 
 main {
   margin-bottom: 50px;
 }
 
-// Required to put it here in order to overwrite Angular Material's styles used in a contact.
 mat-card {
+  margin: 2rem auto;
+
+  mat-card-subtitle {
+    margin-top: 2rem !important;
+  }
+  mat-card-title,
+  mat-card-subtitle {
+    text-align: center;
+  }
+
+  // Required to put it here in order to overwrite Angular Material's styles used in a contact.
   .mat-form-field-subscript-wrapper {
     padding: 0 !important;
   }
