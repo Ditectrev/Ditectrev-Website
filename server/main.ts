@@ -11,8 +11,11 @@ import * as logger from 'morgan';
 import * as nodemailer from 'nodemailer';
 import * as rateLimit from 'express-rate-limit';
 import * as session from 'express-session';
+import * as Mail from 'nodemailer/lib/mailer';
 import { ApplicationModule } from './app.module';
 import { enableProdMode } from '@angular/core';
+import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
+import { EventContext } from 'firebase-functions';
 import { Express } from 'express';
 import {
   ExpressAdapter,
@@ -21,6 +24,7 @@ import {
 import { NestFactory } from '@nestjs/core';
 import { RateLimit } from 'express-rate-limit';
 
+require('dotenv').config(); // It has to be here, "dotenv-webpack" makes them accessible only the browser code.
 const helmet = require('helmet');
 
 enableProdMode(); // Faster server renders in production mode (development doesn't need it).
@@ -28,16 +32,6 @@ enableProdMode(); // Faster server renders in production mode (development doesn
 admin.initializeApp(); // Initialize Firebase SDK.
 
 const expressApp: Express = express(); // Create Express instance.
-
-const mailTransport = nodemailer.createTransport({
-  // Make sure the environmental variables have proper typings.
-  host: String(process.env.MAIL_HOST),
-  port: Number(process.env.MAIL_PORT),
-  auth: {
-    user: String(process.env.MAIL_ACCOUNT),
-    pass: String(process.env.MAIL_PASSWORD),
-  },
-});
 
 // Create and init NestJS application based on Express instance.
 async function bootstrap() {
@@ -192,6 +186,74 @@ async function bootstrap() {
   // await nestApp.listen(4479); // Initialize NestJS server, and listen on specific port (for testing on localhost). Use when testing locally without Firebase Cloud Functions solely on NestJS.
 }
 
+async function onCreateSendEmail(
+  snap: DocumentSnapshot,
+  _context: EventContext
+) {
+  try {
+    const contactFormData = snap.data();
+    console.log('Submitted contact form: ', contactFormData);
+    console.log('context: ', _context); // This log will be shown in Firebase Functions logs.
+
+    const mailTransport: Mail = nodemailer.createTransport({
+      // Make sure the environmental variables have proper typings.
+      host: String(process.env.MAIL_HOST),
+      port: Number(process.env.MAIL_PORT),
+      auth: {
+        user: String(process.env.MAIL_ACCOUNT),
+        pass: String(process.env.MAIL_PASSWORD),
+      },
+      tls: {
+        rejectUnauthorized: false, //! Fix ERROR "Hostname/IP doesn't match certificate's altnames".
+      },
+    });
+
+    const mailOptions = {
+      // TODO: Make possible to upload multiple files.
+      attachments: [
+        {
+          contentType: `${contactFormData!.contentType}`,
+          filename: `${contactFormData!.fileName}`,
+          path: `${contactFormData!.fileUploader}`,
+        },
+      ],
+      bcc: 'contact@ditectrev.com',
+      from: `${contactFormData!.formControlName} <${
+        contactFormData!.formControlEmail
+      }>`,
+      to: `${contactFormData!.formControlEmail}`,
+      subject: `Contact Form: Ditectrev`,
+      // TODO: Get dial code prefix and transform project deadline date properly.
+      // TODO: Make local time.
+      html: `
+        <p>A message from a contact form has been sent. That is a copy of your message.</p>
+        <h3>Message content:</h3>
+        <ul>
+          <li>Name: ${contactFormData!.formControlName}</li>
+          <li>E-mail: ${contactFormData!.formControlEmail}</li>
+          <li>Phone: ${contactFormData!.formControlPhone}</li>
+          <li>Project deadline: ${new Date(
+            contactFormData!.formControlDeadline._seconds * 1000
+          )}</li>
+          <li>Project description: ${
+            contactFormData!.formControlDescription
+          }</li>
+          <li>Preferred form of contact: ${
+            contactFormData!.formControlContactPreference
+          }</li>
+          <li>Interested in the following services: ${
+            contactFormData!.formControlService
+          }</li>
+        </ul>
+      `,
+    };
+
+    await mailTransport.sendMail(mailOptions);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 // TODO: Add ".region('europe-west')" all Firebase Cloud Functions, issue #842.
 // Firebase Cloud Function for Server Side Rendering (SSR).
 exports.angularUniversalFunction = functions.https.onRequest(<any>expressApp);
@@ -201,57 +263,7 @@ exports.contactFormFunction = functions.firestore
   .document(
     String(process.env.FIRESTORE_COLLECTION_MESSAGES) + '/{formControlEmail}' // Make sure the environmental variable is a string.
   )
-  .onCreate(async (snap: any, context: any) => {
-    if (snap.data() === null) return null;
-
-    const contactFormData = snap.data();
-    console.log('Submitted contact form: ', contactFormData);
-    console.log('context: ', context); // This log will be shown in Firebase Functions logs.
-
-    const mailOptions = {
-      from: `${contactFormData.formControlName} <${contactFormData.formControlEmail}>`,
-      to: 'ditectrev@gmail.com',
-      subject: `Contact Form: Thesis App`,
-      // TODO: Get dial code prefix and transform project deadline date properly.
-      // TODO: Show only the filled fields.
-      // TODO: Make local time.
-      // TODO: Add attachments.
-      // TODO: Add bcc for the sender.
-      // TODO: Format "Additional files" when receiving a mail.
-      // TODO: Remove the token from attachment.
-      html: `
-        <p>Message from a contact form has been send.</p>
-        <h3>Message content:</h3>
-        <ul>
-          <li>Name: ${contactFormData.formControlName}</li>
-          <li>E-mail: ${contactFormData.formControlEmail}</li>
-          <li>Phone: ${contactFormData.formControlPhone}</li>
-          <li>Project deadline: ${new Date(
-            contactFormData.formControlDeadline._seconds * 1000
-          )}</li>
-          <li>Project description: ${
-            contactFormData.formControlDescription
-          }</li>
-          <li>Additional files: ${contactFormData.fileUploader}</li>
-          <li>Preferred form of contact: ${
-            contactFormData.formControlContactPreference
-          }</li>
-          <li>Interested in the following services: ${
-            contactFormData.formControlService
-          }</li>
-        </ul>
-      `,
-    };
-
-    return mailTransport
-      .sendMail(mailOptions)
-      .then((info: string) => {
-        console.log('Info: ', info);
-      })
-      .catch((error: string) => {
-        return console.log('Error: ', error); // This log will be shown in Firebase Functions logs.
-      });
-  });
+  .onCreate(onCreateSendEmail);
 
 bootstrap().catch((err) => console.error(err));
 

@@ -30,7 +30,10 @@ import { throwError } from 'rxjs';
 export class ContactComponent {
   public acceptedTerms = false;
   public currentDate: Date = new Date();
+  // TODO: Make this 1 array of interface which would hold content type, download URL and filename?
+  public contentType: string[] = [];
   public downloadURL: string[] = [];
+  public fileName: string = '';
   public maxFileSize = 20971520;
   public servicesItems: string[] = [
     'Cyber Security',
@@ -153,9 +156,10 @@ export class ContactComponent {
    * @returns {void}
    */
   public onSubmit(form: any, formDirective: FormGroupDirective): void {
+    form.contentType = this.contentType;
     form.fileUploader = this.downloadURL;
+    form.fileName = this.fileName;
 
-    // TODO: Check if it works on deployment.
     // TODO: Add progressbar on file upload.
     this.angularFirestore
       .collection(String(process.env.FIRESTORE_COLLECTION_MESSAGES)) // Make sure the environmental variable is a string.
@@ -188,19 +192,22 @@ export class ContactComponent {
   public uploadFile(event: any): void {
     // Iterate through all uploaded files.
     for (let i = 0; i < event.target.files.length; i++) {
-      const randomId = Math.random().toString(36).substring(2); // Create random ID, so the same file names can be uploaded to Cloud Firestore.
-
       const file = event.target.files[i]; // Get each uploaded file.
+      const fileName = file.name + '_' + Date.now(); // It makes sure files with the same name will be uploaded more than once and each of them will have unique ID, showing date (in milliseconds) of the upload.
+
+      this.contentType = file.type;
+      this.fileName = fileName;
 
       // Get file reference.
       const fileRef: AngularFireStorageReference = this.angularFireStorage.ref(
-        randomId
+        fileName
       );
 
       // Create upload task.
       const task: AngularFireUploadTask = this.angularFireStorage.upload(
-        randomId,
-        file
+        fileName,
+        file,
+        file.type
       );
 
       // Upload file to Cloud Firestore.

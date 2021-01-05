@@ -1,4 +1,4 @@
-/* Custom webpack server properties. */
+/* Custom webpack properties. */
 
 const dotenv = require('dotenv-webpack');
 
