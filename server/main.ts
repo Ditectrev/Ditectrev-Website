@@ -210,6 +210,7 @@ async function onCreateSendEmail(
 
     const mailOptions = {
       // TODO: Make possible to upload multiple files.
+      // TODO: Drop timestamp from file name.
       attachments: [
         {
           contentType: `${contactFormData!.contentType}`,
