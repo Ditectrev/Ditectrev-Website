@@ -17,6 +17,7 @@
 // TODO: Make CSS and HTML alphabetically (only these are missing).
 // TODO: Convert all PNG files to SVG, alternatively some to AVIF.
 // TODO: Use native lazy loading on images (loading="lazy").
+// TODO: Maybe instead of manually copying .env file to functions try https://stackoverflow.com/questions/51883178/firebase-functions-environment-variables-can-not-read-property-of-undefined/
 
 // import Agastya from 'agastya';
 import { AppComponent } from './app.component';
