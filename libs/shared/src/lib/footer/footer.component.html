@@ -17,13 +17,14 @@
       fxLayoutAlign.lt-md="start center"
       role="region"
     >
-      <!-- TODO: Add this as link to home. -->
       <!-- Ditectrev's logo. -->
-      <img
-        alt="This is Ditectrev's logo"
-        src="assets/logo.svg"
-        title="Ditectrev"
-      />
+      <a routerLink="/">
+        <img
+          alt="This is Ditectrev's logo"
+          src="assets/logo.svg"
+          title="Ditectrev"
+        />
+      </a>
       <!-- Footer's menu items located on the left side. -->
       <ng-container *ngFor="let informationItem of informationItems">
         <p
