@@ -47,6 +47,7 @@ async function bootstrap() {
     })
   );
 
+  // TODO: Uncomment this, try to find workaround to the Helmet's issue.
   // expressApp.use(
   //   helmet.contentSecurityPolicy({
   //     directives: {
