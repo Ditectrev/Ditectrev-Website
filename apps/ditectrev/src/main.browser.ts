@@ -1,21 +1,20 @@
-import "hammerjs";
-import { AppModule } from "./app/app.module";
-import { enableProdMode } from "@angular/core";
-import { environment } from "./environments/environment";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import 'hammerjs';
+import { AppModule } from './app/app.module';
+import { enableProdMode } from '@angular/core';
+import { environment } from './environments/environment';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 if (environment.production) {
   enableProdMode();
 }
 
-// Workaround for service worker, issue #13351.
-// TODO: Check if it works.
-document.addEventListener("DOMContentLoaded", () => {
+// Workaround for service worker, issue #13351. Other than "Add to home screen" on mobile device everything works perfectly.
+document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .then(() => {
-      if ("serviceWorker" in navigator && environment.production) {
-        navigator.serviceWorker.register("./ngsw-worker.js");
+      if ('serviceWorker' in navigator && environment.production) {
+        navigator.serviceWorker.register('./ngsw-worker.js');
       }
     })
     .catch((err) => console.error(err));
