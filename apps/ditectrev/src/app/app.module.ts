@@ -18,6 +18,7 @@
 // TODO: Convert all PNG files to SVG, alternatively some to AVIF.
 // TODO: Use native lazy loading on images (loading="lazy").
 // TODO: Maybe instead of manually copying .env file to functions try https://stackoverflow.com/questions/51883178/firebase-functions-environment-variables-can-not-read-property-of-undefined/
+// TODO: Try https://github.com/kangax/html-minifier
 
 // import Agastya from 'agastya';
 import { AppComponent } from './app.component';
