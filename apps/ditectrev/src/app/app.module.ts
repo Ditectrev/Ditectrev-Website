@@ -20,7 +20,7 @@
 // TODO: Maybe instead of manually copying .env file to functions try https://stackoverflow.com/questions/51883178/firebase-functions-environment-variables-can-not-read-property-of-undefined/
 // TODO: Try https://github.com/kangax/html-minifier
 
-// import Agastya from 'agastya';
+import Agastya from 'agastya';
 import { AppComponent } from './app.component';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { CoreModule } from './../../../../libs/core/src/index';
@@ -33,8 +33,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 import { SharedModule } from './../../../../libs/shared/src/index';
 
-// new Agastya(String(process.env.AGASTYA_API_KEY)); // Make sure the environmental variable is a string. // TODO: Uncomment Agastya and fix it on Angular Universal, because now it's breaking after upgrade to Angular 10.
-
+new Agastya(String(process.env.AGASTYA_API_KEY)); // Make sure the environmental variable is a string.
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent],

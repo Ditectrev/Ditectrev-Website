@@ -3,6 +3,21 @@
 // TODO: Add nonce-based CSP.
 // TODO: Improve on TypeScript typings.
 import 'zone.js/dist/zone-node'; // Without that the app breaks on SSR.
+
+//! Fix ERROR "window is not defined" (at least for Agastya). Before upgrading to Angular 10 from Angular 8 it was working by simply using "applyDomino" in "server/app.module.ts". Maybe in the future the issue #451 (https://github.com/nestjs/ng-universal/issues/451) will fix this regression error.
+import { createWindow } from 'domino';
+import { join } from 'path';
+const indexHtml = join(
+  process.cwd(),
+  'dist/apps/ditectrev-browser/index2.html'
+);
+const win = createWindow(indexHtml);
+
+// Polyfills
+(global as any).window = win;
+(global as any).document = win.document;
+(global as any).navigator = win.navigator;
+
 import * as admin from 'firebase-admin';
 import * as csurf from 'csurf';
 import * as express from 'express';

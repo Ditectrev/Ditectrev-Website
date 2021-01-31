@@ -105,6 +105,7 @@
     "audit-ci": "^3.1.1",
     "codelyzer": "^6.0.0",
     "cypress": "^4.12.1",
+    "domino": "^2.1.6",
     "dotenv-webpack": "^2.0.0",
     "eslint": "^7.5.0",
     "jest": "^26.4.2",
