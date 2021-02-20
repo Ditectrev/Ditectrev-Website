@@ -1,5 +1,5 @@
 # TODO: Add Lighthouse CI
-# TODO: Justify the pipeline after introducing "npm run root:starting:index:firebase".
+# TODO: Justify the pipeline after introducing "npm run root:starting:index:firebase", "build-and-deploy:ditectrev:ssr:staging:firebase", and "build-and-deploy:ditectrev:ssr:production:firebase".
 # TODO: Remove the benchmarks to pass the pipeline.
 # GitLab uses Docker in the background, so it's required to get the image.
 image: node:10.15.3-alpine

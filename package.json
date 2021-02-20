@@ -133,6 +133,8 @@
     "build:ditectrev:production": "ng build --project=ditectrev --prod",
     "build:ditectrev:ssr:staging": "npm run build:ditectrev:staging && ng run ditectrev:server",
     "build:ditectrev:ssr:production": "npm run build:ditectrev:production && ng run ditectrev:server:production",
+    "build-and-deploy:ditectrev:ssr:staging:firebase": "npm run build:ditectrev:ssr:staging && npm run root:starting:index:firebase && firebase deploy",
+    "build-and-deploy:ditectrev:ssr:production:firebase": "npm run build:ditectrev:ssr:production && npm run root:starting:index:firebase && firebase deploy",
     "build-and-serve:ditectrev:ssr:staging": "npm run build:ditectrev:ssr:staging && npm run serve:ditectrev:ssr",
     "build-and-serve:ditectrev:ssr:production": "npm run build:ditectrev:ssr:production && npm run serve:ditectrev:ssr",
     "build-and-serve:ditectrev:ssr:staging:firebase": "npm run build:ditectrev:ssr:staging && npm run root:starting:index:firebase && npm run serve:ditectrev:ssr:firebase",
