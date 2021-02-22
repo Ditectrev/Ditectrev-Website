@@ -161,6 +161,7 @@ export class ContactComponent {
     form.fileName = this.fileName;
 
     // TODO: Add progressbar on file upload.
+    // TODO: According to Vue course by Max throw should be in if/else statement and catch later.
     this.angularFirestore
       .collection(String(process.env.FIRESTORE_COLLECTION_MESSAGES)) // Make sure the environmental variable is a string.
       .add(form)
