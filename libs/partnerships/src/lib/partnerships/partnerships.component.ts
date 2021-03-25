@@ -18,20 +18,17 @@ export class PartnershipsComponent {
     name: string;
   }[] = [
     {
-      description:
-        'Sample content goes here... Sample content goes here... Sample content goes here... Sample content goes here...',
+      description: "Let's partner to give you our technical expertise.",
       icon: 'grade',
       name: 'Creative Agencies',
     },
     {
-      description:
-        'Sample content goes here... Sample content goes here... Sample content goes here... Sample content goes here...',
+      description: 'Together we can do more.',
       icon: 'perm_identity',
       name: 'Freelancers',
     },
     {
-      description:
-        'Sample content goes here... Sample content goes here... Sample content goes here... Sample content goes here...',
+      description: "Overloaded with work? Sometimes we're too, let's talk.",
       icon: 'code',
       name: 'Software Houses',
     },
