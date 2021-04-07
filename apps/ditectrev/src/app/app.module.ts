@@ -6,7 +6,6 @@
 // TODO: Check VSCode options.
 // TODO: Add Docker Bench Security.
 // TODO: Make error handling to Sentry, just be sure source maps aren't deployed to the hosting, only to Sentry (https://medium.com/angular-in-depth/debug-angular-apps-in-production-without-revealing-source-maps-ab4a235edd85).
-// TODO: Change links to policies in Agastya.
 // TODO: Check many interesting things from Angular 8 Example App.
 // TODO: Add push notifications (something simple, e.g. sign up for a newsletter) and check offline worker after adding CSP.
 // TODO: Check Google Analytics and Hotjar if works after implementing CSP.
