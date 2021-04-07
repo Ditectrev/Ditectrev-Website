@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { rollIn } from "ng-animate";
-import { ParticlesConfig } from "./particles/particles-config";
-import { TextAnimation } from "ngx-teximate";
+import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { rollIn } from 'ng-animate';
+import { ParticlesConfig } from './particles/particles-config';
+import { TextAnimation } from 'ngx-teximate';
 
 declare let particlesJS: any; // Required to be properly interpreted by TypeScript.
 
@@ -13,23 +13,23 @@ declare let particlesJS: any; // Required to be properly interpreted by TypeScri
  * @implements OnInit
  */
 @Component({
-  selector: "app-slider",
-  templateUrl: "./slider.component.html",
-  styleUrls: ["./slider.component.scss"],
+  selector: 'app-slider',
+  templateUrl: './slider.component.html',
+  styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent implements OnInit {
   private headerText: string =
-    "<span style='color: #3f51b5'>#Build</span> <span style='font-weight: 100'>Your</span> Digital Future. <a href='/contact'>Link</a>"; // Styles and text for the heading.
+    "<span style='color: #3f51b5'>#Build</span> <span style='font-weight: 100'>Your</span> Digital Future.<br><a href='/contact'>Contact Us</a>"; // Styles and text for the heading.
   public headerSafeHtml: SafeHtml; // Required for mixing styles in HTML tags within a string.
 
   // ng-animate & ngx-teximate settings.
   public enterAnimation: TextAnimation = {
     animation: rollIn,
     delay: 100,
-    type: "letter",
+    type: 'letter',
   };
   public subheaderText: string =
-    "Online Education and Information Technology (IT) Consulting.";
+    'Online Education and Information Technology (IT) Consulting.';
 
   /**
    * @constructor
@@ -60,6 +60,6 @@ export class SliderComponent implements OnInit {
    * @returns {void}
    */
   public invokeParticles(): void {
-    particlesJS("particles-js", ParticlesConfig, function () { });
+    particlesJS('particles-js', ParticlesConfig, function () {});
   }
 }
