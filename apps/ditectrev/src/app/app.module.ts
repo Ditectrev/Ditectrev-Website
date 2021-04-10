@@ -45,6 +45,11 @@ new Agastya(String(process.env.AGASTYA_API_KEY)); // Make sure the environmental
       enabled: environment.production,
     }),
   ],
-  providers: [{ provide: 'googleTagManagerId', useValue: 'GTM-WVLBQKK' }], // TODO: Add other integrations & make "useValue" from "process.env".
+  providers: [
+    {
+      provide: 'googleTagManagerId',
+      useValue: String(process.env.GOOGLE_TAG_MANAGER), // TODO: This doesn't work, and the GTM is directly in index2.html at the moment.
+    },
+  ],
 })
 export class AppModule {}

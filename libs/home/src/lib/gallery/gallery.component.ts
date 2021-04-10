@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   NgxGalleryAnimation,
   NgxGalleryImage,
   NgxGalleryOptions,
-} from "ngx-gallery-9";
+} from 'ngx-gallery-9';
 
 @Component({
-  selector: "app-gallery",
-  templateUrl: "./gallery.component.html",
-  styleUrls: ["./gallery.component.scss"],
+  selector: 'app-gallery',
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
   // Non-null assertion operators are required to let know the compiler that this value is not empty and exists.
@@ -24,7 +24,7 @@ export class GalleryComponent implements OnInit {
   public ngOnInit(): void {
     this.galleryOptions = [
       {
-        height: "800px",
+        height: '800px',
         image: true,
         imageAnimation: NgxGalleryAnimation.Rotate,
         imageArrows: false,
@@ -44,12 +44,12 @@ export class GalleryComponent implements OnInit {
       },
       {
         breakpoint: 991,
-        height: "500px",
+        height: '500px',
         thumbnails: false,
       },
       {
         breakpoint: 767,
-        height: "400px",
+        height: '400px',
       },
     ];
 
@@ -57,25 +57,22 @@ export class GalleryComponent implements OnInit {
     // TODO: Optimize the images to be more efficient/modern format of images.
     this.galleryImages = [
       {
-        big: "./assets/cyber-security.jpg",
-        description:
-          'Some kind of description goes here... Some kind of description goes here...<br><br><a href="/cyber-security">Cyber Security</a>',
-        medium: "./assets/cyber-security.jpg",
-        small: "./assets/cyber-security.jpg",
+        big: './assets/cyber-security.jpg',
+        description: '<a href="/cyber-security">Cyber Security</a>',
+        medium: './assets/cyber-security.jpg',
+        small: './assets/cyber-security.jpg',
       },
       {
-        big: "assets/digital-strategy.jpg",
-        description:
-          'Some kind of description goes here... Some kind of description goes here...<br><br><a href="/digital-strategy">Digital Strategy</a>',
-        medium: "assets/digital-strategy.jpg",
-        small: "assets/digital-strategy.jpg",
+        big: 'assets/digital-strategy.jpg',
+        description: '<a href="/digital-strategy">Digital Strategy</a>',
+        medium: 'assets/digital-strategy.jpg',
+        small: 'assets/digital-strategy.jpg',
       },
       {
-        big: "assets/software-development.jpg",
-        description:
-          'Some kind of description goes here... Some kind of description goes here...<br><br><a href="/software-development">Software Development</a>',
-        medium: "assets/software-development.jpg",
-        small: "assets/software-development.jpg",
+        big: 'assets/software-development.jpg',
+        description: '<a href="/software-development">Software Development</a>',
+        medium: 'assets/software-development.jpg',
+        small: 'assets/software-development.jpg',
       },
     ];
   }
