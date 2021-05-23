@@ -21,7 +21,7 @@ import { SharedModule } from './../../../../libs/shared/src/index';
   declarations: [ContactComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
+    AngularFirestoreModule, // TODO: Check offline support, i.e., enablePersistence(), see https://github.com/angular/angularfire/blob/master/docs/firestore/offline-data.md
     AngularFireStorageModule,
     MaterialFileInputModule,
     Ng2TelInputModule,
