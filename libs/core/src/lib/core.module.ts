@@ -14,6 +14,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
     BrowserAnimationsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    // TODO: server is needed to have it working, and looks like useless without any login/logout.
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN',

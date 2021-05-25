@@ -225,7 +225,7 @@ async function onCreateSendEmail(
     });
 
     const mailOptions = {
-      // TODO: Make possible to upload multiple files.
+      // TODO: Make possible to upload multiple files, maybe using "batch()" (it's for writing, transaction is for reading) of firestore.
       // TODO: Drop timestamp from file name.
       attachments: [
         {
