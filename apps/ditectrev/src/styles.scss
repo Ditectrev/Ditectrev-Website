@@ -42,9 +42,12 @@ app-gallery {
   }
 }
 
-// TODO: Change the font.
-body {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+// TODO: Add Trirong font for paragraphs and maybe some headings.
+body,
+h1 {
+  font-family: 'Thasadith', sans-serif;
+  font-style: italic;
+  font-weight: bold;
   margin: 0;
 }
 
