@@ -42,12 +42,23 @@ app-gallery {
   }
 }
 
-// TODO: Add Trirong font for paragraphs and maybe some headings.
-body,
-h1 {
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+mat-card-title {
   font-family: 'Thasadith', sans-serif;
-  font-style: italic;
-  font-weight: bold;
+}
+
+body,
+mat-card-subtitle,
+mat-menu-item,
+p,
+span {
+  font-family: 'Trirong', serif;
   margin: 0;
 }
 
