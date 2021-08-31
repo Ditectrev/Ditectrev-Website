@@ -42,6 +42,10 @@ app-gallery {
   }
 }
 
+body {
+  margin: 0;
+}
+
 a,
 h1,
 h2,
@@ -49,17 +53,16 @@ h3,
 h4,
 h5,
 h6,
-mat-card-title {
+mat-card-title,
+span {
   font-family: 'Thasadith', sans-serif;
 }
 
 body,
 mat-card-subtitle,
 mat-menu-item,
-p,
-span {
+p {
   font-family: 'Trirong', serif;
-  margin: 0;
 }
 
 // Required to put it here in order to overwrite Angular Material's styles used in a footer.
