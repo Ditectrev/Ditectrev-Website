@@ -46,6 +46,9 @@ body {
   margin: 0;
 }
 
+.mat-tree-node,
+.mat-step-text-label,
+.mat-tab-label-content,
 a,
 h1,
 h2,
@@ -54,14 +57,25 @@ h4,
 h5,
 h6,
 mat-card-title,
-span {
+mat-error,
+mat-header-cell,
+mat-hint,
+span,
+strong,
+tspan {
   font-family: 'Thasadith', sans-serif;
 }
 
+.mat-list-item-content,
 body,
+input[type='email'],
+input[type='tel'],
+input[type='text'],
 mat-card-subtitle,
 mat-menu-item,
-p {
+p,
+// TODO: textarea doesn't change the font.
+textarea {
   font-family: 'Trirong', serif;
 }
 
