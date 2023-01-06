@@ -65,7 +65,7 @@ export class ContactComponent {
     private angularFirestore: AngularFirestore,
     private angularFireStorage: AngularFireStorage,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   // Create contact form with all required validators.
   public contactForm: FormGroup = this.formBuilder.group({
@@ -224,7 +224,7 @@ export class ContactComponent {
             });
           }),
           catchError((error: any) => {
-            return throwError(error);
+            return throwError(error); // TODO: Check RxJs Error Handling: Complete Practical Guide for error handling.
           })
         )
         .subscribe();
